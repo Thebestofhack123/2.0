@@ -1,8 +1,7 @@
 -- List of the URLs with the modified names
 local urls = {
     "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Ducks",
-
-    "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20SquidGame",
+ "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20SquidGame",
     "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Ducks%202",
     "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Sheep",
     "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Capybaras!",
