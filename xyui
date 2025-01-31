@@ -1,3 +1,26 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Ducks"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Capybaras!"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Sheep"))()
+-- List of the URLs with the modified names
+local urls = {
+    "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Ducks",
+    "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Ducks%202",
+    "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Sheep",
+    "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Capybaras!",
+    "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20The%20Food",
+    "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Monkeys" 
+}
+
+-- Iterate through each URL, get the content, and execute it
+for _, url in ipairs(urls) do
+    local success, result = pcall(function()
+        local content = game:HttpGet(url)
+        local func = loadstring(content)
+        if func then
+            func()  -- Execute the loaded string
+        else
+            warn("Failed to load string from URL: " .. url)
+        end
+    end)
+    
+    if not success then
+        warn("Error fetching from URL: " .. url .. " - " .. result)
+    end
+end
