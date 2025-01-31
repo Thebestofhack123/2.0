@@ -195,7 +195,7 @@ local function createGUI()
             teleporting = true
             while teleporting do
                 teleportToRandomObject()
-                wait(4.5)
+                wait(0.1)
             end
         end
     end)
