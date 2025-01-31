@@ -1,0 +1,3 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Ducks"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Capybaras!"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Find%20the%20Sheep"))()
