@@ -11,6 +11,12 @@ Notification:Notify(
     end}
 )
 
+-- Wait for the notification to disappear or for 4.5 seconds
+wait(4.5)
+
+-- Copy the description to clipboard after 4.5 seconds
+setclipboard("https://discord.gg/dmBzVaRrD3")
+
 local player = game.Players.LocalPlayer
 local folder = game.Workspace.CapybaraMain.Capybara
 
@@ -24,7 +30,6 @@ end
 
 local teleporting = false
 
--- Function to get all valid teleport objects
 local function getTeleportObjects()
     local objects = {}
     for _, object in pairs(folder:GetChildren()) do
@@ -37,7 +42,6 @@ local function getTeleportObjects()
     return objects
 end
 
--- Function to teleport to a random object in the folder
 local function teleportToRandomObject()
     local objects = getTeleportObjects()
     local targetObject = objects[math.random(1, #objects)]
@@ -46,8 +50,12 @@ local function teleportToRandomObject()
     end
 end
 
--- Function to create the GUI dynamically
 local function createGUI()
+    local oldGUI = game:GetService("CoreGui"):FindFirstChild("MadeByPolleser")
+    if oldGUI then
+        oldGUI:Destroy()
+    end
+
     local screenGui = Instance.new("ScreenGui")
     screenGui.Name = "MadeByPolleser"
     screenGui.Parent = game:GetService("CoreGui")
@@ -109,7 +117,7 @@ local function createGUI()
     minimizeButton.Name = "MinimizeButton"
     minimizeButton.Text = "-"
     minimizeButton.Size = UDim2.new(0.1, 0, 0.1, 0)
-    minimizeButton.Position = UDim2.new(0.9, 0, 0.05, 0)  -- Fixed to top-right corner
+    minimizeButton.Position = UDim2.new(0.9, 0, 0.05, 0)
     minimizeButton.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
     minimizeButton.TextScaled = true
     minimizeButton.Parent = screenGui
@@ -143,14 +151,12 @@ local function createGUI()
 
     minimizeButton.MouseButton1Click:Connect(function()
         if isMinimized then
-
             frame.Size = UDim2.new(0.3, 0, 0.15, 0)
             frame.BackgroundTransparency = 0
             startButton.Visible = true
             stopButton.Visible = true
             minimizeButton.Text = "-"
         else
-            
             frame.Size = UDim2.new(0.3, 0, 0.05, 0)
             frame.BackgroundTransparency = 1
             startButton.Visible = false
@@ -160,14 +166,13 @@ local function createGUI()
         isMinimized = not isMinimized
     end)
 
-
     local rainbowTextLabel = Instance.new("TextLabel")
     rainbowTextLabel.Name = "RainbowTextLabel"
     rainbowTextLabel.Text = "Made by Polleser"
     rainbowTextLabel.Size = UDim2.new(0.8, 0, 0.2, 0)
-    rainbowTextLabel.Position = UDim2.new(0.1, 0, 0.05, 0)  -- Position it at the top of the frame
+    rainbowTextLabel.Position = UDim2.new(0.1, 0, 0.05, 0)
     rainbowTextLabel.BackgroundTransparency = 1
-    rainbowTextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)  -- Default color: red
+    rainbowTextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
     rainbowTextLabel.TextScaled = true
     rainbowTextLabel.Parent = frame
 
@@ -175,7 +180,7 @@ local function createGUI()
     local function changeTextColor()
         while true do
             for i = 1, 6 do
-                rainbowTextLabel.TextColor3 = Color3.fromHSV(i / 6, 1, 1)  -- Change color to create a rainbow effect
+                rainbowTextLabel.TextColor3 = Color3.fromHSV(i / 6, 1, 1)
                 wait(0.1)
             end
         end
