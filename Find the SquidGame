@@ -18,7 +18,7 @@ wait(4.5)
 setclipboard("https://discord.gg/dmBzVaRrD3")
 
 local player = game.Players.LocalPlayer
-local folder = game.Workspace.Character
+local folder = game.Workspace.Characters
 
 if not folder then
     Notification:Notify(
