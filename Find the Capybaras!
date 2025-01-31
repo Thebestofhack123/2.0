@@ -12,7 +12,7 @@ Notification:Notify(
 )
 
 local player = game.Players.LocalPlayer
-local folder = game.Workspace:GetChildren("CapybaraMain.Capybara")
+local folder = game.Workspace.CapybaraMain.Capybara
 
 if not folder then
     Notification:Notify(
