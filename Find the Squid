@@ -1,0 +1,170 @@
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local player = game.Players.LocalPlayer
+local folder = game.Workspace:FindFirstChild("Nodes") -- Ensure it exists
+
+if not folder then
+    warn("Error: Folder 'Nodes' not found in Workspace!")
+    return
+end
+
+local teleporting = false
+local tweenSpeed = 7 -- Slower movement (higher = slower)
+local pauseTime = 3 -- Pause after reaching target
+
+local function getTeleportObjects()
+    local objects = {}
+    for _, object in pairs(folder:GetChildren()) do
+        if object:IsA("BasePart") then
+            table.insert(objects, object)
+        elseif object:IsA("Model") and object.PrimaryPart then
+            table.insert(objects, object.PrimaryPart)
+        end
+    end
+    return objects
+end
+
+local function tweenToObject(targetObject)
+    if player.Character and player.Character.PrimaryPart then
+        local character = player.Character
+        local humanoidRootPart = character.PrimaryPart
+
+        local tweenInfo = TweenInfo.new(tweenSpeed, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+        local goal = {CFrame = targetObject.CFrame}
+
+        local tween = TweenService:Create(humanoidRootPart, tweenInfo, goal)
+        tween:Play()
+
+        -- Pause for 3 seconds after reaching the target
+        tween.Completed:Connect(function()
+            wait(pauseTime)
+        end)
+    end
+end
+
+local function teleportToRandomObject()
+    local objects = getTeleportObjects()
+    if #objects > 0 then
+        local targetObject = objects[math.random(1, #objects)]
+        tweenToObject(targetObject)
+    end
+end
+
+local function createGUI()
+    local oldGUI = game:GetService("CoreGui"):FindFirstChild("MadeByPolleser")
+    if oldGUI then
+        oldGUI:Destroy()
+    end
+
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "MadeByPolleser"
+    screenGui.Parent = game:GetService("CoreGui")
+
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0.3, 0, 0.15, 0)
+    frame.Position = UDim2.new(0.35, 0, 0.4, 0)
+    frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    frame.Parent = screenGui
+
+    local startButton = Instance.new("TextButton")
+    startButton.Text = "Start"
+    startButton.Size = UDim2.new(0.4, 0, 0.4, 0)
+    startButton.Position = UDim2.new(0.1, 0, 0.3, 0)
+    startButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+    startButton.Parent = frame
+
+    local stopButton = Instance.new("TextButton")
+    stopButton.Text = "Stop"
+    stopButton.Size = UDim2.new(0.4, 0, 0.4, 0)
+    stopButton.Position = UDim2.new(0.55, 0, 0.3, 0)
+    stopButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    stopButton.Parent = frame
+
+    local minimizeButton = Instance.new("TextButton")
+    minimizeButton.Text = "-"
+    minimizeButton.Size = UDim2.new(0.1, 0, 0.1, 0)
+    minimizeButton.Position = UDim2.new(0.9, 0, 0.05, 0)
+    minimizeButton.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+    minimizeButton.Parent = screenGui
+
+    local isMinimized = false
+
+    minimizeButton.MouseButton1Click:Connect(function()
+        if isMinimized then
+            frame.Size = UDim2.new(0.3, 0, 0.15, 0)
+            frame.BackgroundTransparency = 0
+            startButton.Visible = true
+            stopButton.Visible = true
+            minimizeButton.Text = "-"
+        else
+            frame.Size = UDim2.new(0.3, 0, 0.05, 0)
+            frame.BackgroundTransparency = 1
+            startButton.Visible = false
+            stopButton.Visible = false
+            minimizeButton.Text = "+"
+        end
+        isMinimized = not isMinimized
+    end)
+
+    local rainbowTextLabel = Instance.new("TextLabel")
+    rainbowTextLabel.Text = "Made by Polleser"
+    rainbowTextLabel.Size = UDim2.new(0.8, 0, 0.2, 0)
+    rainbowTextLabel.Position = UDim2.new(0.1, 0, 0.05, 0)
+    rainbowTextLabel.BackgroundTransparency = 1
+    rainbowTextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+    rainbowTextLabel.Parent = frame
+
+    local function changeTextColor()
+        while true do
+            for i = 1, 6 do
+                rainbowTextLabel.TextColor3 = Color3.fromHSV(i / 6, 1, 1)
+                wait(0.1)
+            end
+        end
+    end
+
+    spawn(changeTextColor)
+
+    startButton.MouseButton1Click:Connect(function()
+        if not teleporting then
+            teleporting = true
+            while teleporting do
+                teleportToRandomObject()
+                wait(tweenSpeed + pauseTime) -- Wait for tween + pause before next move
+            end
+        end
+    end)
+
+    stopButton.MouseButton1Click:Connect(function()
+        teleporting = false
+    end)
+
+    -- Make the frame draggable
+    local dragging, dragStart, startPos
+
+    frame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = true
+            dragStart = input.Position
+            startPos = frame.Position
+
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(input)
+        if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+            local delta = input.Position - dragStart
+            frame.Position = UDim2.new(
+                startPos.X.Scale, startPos.X.Offset + delta.X,
+                startPos.Y.Scale, startPos.Y.Offset + delta.Y
+            )
+        end
+    end)
+end
+
+createGUI()
