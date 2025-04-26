@@ -12,33 +12,62 @@ local steppedConnections = {}
 local renderConnections = {}
 
 local function MegaLag()
-    for _,v in pairs(getconnections(game:GetService("RunService").Heartbeat)) do
-        table.insert(heartbeatConnections, v)
-        v:Disable()
+    -- Check if RunService exists and is accessible
+    if not RunService or not RunService.Heartbeat or not RunService.Stepped or not RunService.RenderStepped then
+        warn("RunService or its events not accessible")
+        return false
     end
+
+    -- Safely get and disable connections
+    pcall(function()
+        for _,v in pairs(getconnections(RunService.Heartbeat)) do
+            table.insert(heartbeatConnections, v)
+            v:Disable()
+        end
+        
+        for _,v in pairs(getconnections(RunService.Stepped)) do
+            table.insert(steppedConnections, v)
+            v:Disable()
+        end
+        
+        for _,v in pairs(getconnections(RunService.RenderStepped)) do
+            table.insert(renderConnections, v)
+            v:Disable()
+        end
+    end)
+
+    -- Safely modify physics settings
+    pcall(function()
+        settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnvironmentalPhysicsThrottle.Disabled
+        settings().Physics.AllowSleep = false
+    end)
+
+    -- Safely disable rendering
+    pcall(function()
+        RunService:Set3dRenderingEnabled(false)
+    end)
     
-    for _,v in pairs(getconnections(game:GetService("RunService").Stepped)) do
-        table.insert(steppedConnections, v)
-        v:Disable()
-    end
-    
-    for _,v in pairs(getconnections(game:GetService("RunService").RenderStepped)) do
-        table.insert(renderConnections, v)
-        v:Disable()
-    end
-    
-    settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Disabled
-    settings().Physics.AllowSleep = false
-    RunService:Set3dRenderingEnabled(false)
+    return true
 end
 
 local function EnableRollback()
     if rollbackEnabled then return false end
     
-    originalStats.health = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health
-    originalStats.position = LocalPlayer.Character and LocalPlayer.Character:GetPivot().Position
+    -- Safely store original stats
+    pcall(function()
+        if LocalPlayer and LocalPlayer.Character then
+            local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                originalStats.health = humanoid.Health
+            end
+            originalStats.position = LocalPlayer.Character:GetPivot().Position
+        end
+    end)
     
-    MegaLag()
+    if not MegaLag() then
+        warn("Failed to enable MegaLag")
+        return false
+    end
     
     rollbackEnabled = true
     return true
@@ -47,58 +76,92 @@ end
 local function DisableRollback()
     if not rollbackEnabled then return false end
     
-    for _,v in pairs(heartbeatConnections) do
-        pcall(function() v:Enable() end)
-    end
-    for _,v in pairs(steppedConnections) do
-        pcall(function() v:Enable() end)
-    end
-    for _,v in pairs(renderConnections) do
-        pcall(function() v:Enable() end)
-    end
+    -- Safely restore connections
+    pcall(function()
+        for _,v in pairs(heartbeatConnections) do
+            v:Enable()
+        end
+        for _,v in pairs(steppedConnections) do
+            v:Enable()
+        end
+        for _,v in pairs(renderConnections) do
+            v:Enable()
+        end
+    end)
     
     heartbeatConnections = {}
     steppedConnections = {}
     renderConnections = {}
     
-    settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Default
-    settings().Physics.AllowSleep = true
-    RunService:Set3dRenderingEnabled(true)
+    -- Safely restore physics settings
+    pcall(function()
+        settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnvironmentalPhysicsThrottle.Default
+        settings().Physics.AllowSleep = true
+    end)
     
-    if LocalPlayer.Character then
-        local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-        if humanoid and originalStats.health then
-            humanoid.Health = originalStats.health
+    -- Safely restore rendering
+    pcall(function()
+        RunService:Set3dRenderingEnabled(true)
+    end)
+    
+    -- Safely restore character stats
+    pcall(function()
+        if LocalPlayer and LocalPlayer.Character then
+            local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+            if humanoid and originalStats.health then
+                humanoid.Health = originalStats.health
+            end
+            if originalStats.position then
+                LocalPlayer.Character:PivotTo(CFrame.new(originalStats.position))
+            end
         end
-        if originalStats.position then
-            LocalPlayer.Character:PivotTo(CFrame.new(originalStats.position))
-        end
-    end
+    end)
     
     rollbackEnabled = false
     return true
 end
 
 local function HardRollback()
-    MegaLag()
+    if not MegaLag() then
+        warn("Failed to initiate MegaLag for hard rollback")
+        return
+    end
     
     local startTime = tick()
     while tick() - startTime < 3 do
-        game:GetService("NetworkClient"):SetOutgoingKBPSLimit(0.5)
+        pcall(function()
+            if game:GetService("NetworkClient") then
+                game:GetService("NetworkClient"):SetOutgoingKBPSLimit(0.5)
+            end
+        end)
         task.wait()
     end
     
     DisableRollback()
     task.wait(0.1)
-    TPS:Teleport(game.PlaceId, LocalPlayer)
+    
+    -- Safely attempt teleport
+    pcall(function()
+        if game.PlaceId and LocalPlayer then
+            TPS:Teleport(game.PlaceId, LocalPlayer)
+        end
+    end)
 end
 
-local Window = Rayfield:CreateWindow({
-    Name = "ALS | PolleserHub",
-    LoadingTitle = "ALS | PolleserHub",
-    LoadingSubtitle = "by Polleser",
-    ConfigurationSaving = { Enabled = false },
-})
+-- Window creation with error handling
+local success, Window = pcall(function()
+    return Rayfield:CreateWindow({
+        Name = "Rollback | PolleserHub",
+        LoadingTitle = "Rollback | PolleserHub",
+        LoadingSubtitle = "by Polleser",
+        ConfigurationSaving = { Enabled = false },
+    })
+end)
+
+if not success or not Window then
+    warn("Failed to create Rayfield window")
+    return
+end
 
 local MainTab = Window:CreateTab("Rollback")
 
@@ -109,21 +172,25 @@ local RollbackToggle = MainTab:CreateToggle({
     Callback = function(Value)
         if Value then
             if EnableRollback() then
-                Rayfield:Notify({
-                    Title = "Rollback Activated",
-                    Content = "Game updates frozen - changes won't save!",
-                    Duration = 3,
-                    Image = "rbxassetid://4483345998"
-                })
+                pcall(function()
+                    Rayfield:Notify({
+                        Title = "Rollback Activated",
+                        Content = "Game updates frozen - changes won't save!",
+                        Duration = 3,
+                        Image = "rbxassetid://4483345998"
+                    })
+                end)
             end
         else
             if DisableRollback() then
-                Rayfield:Notify({
-                    Title = "Rollback Deactivated",
-                    Content = "Game is saving changes normally",
-                    Duration = 3,
-                    Image = "rbxassetid://4483345998"
-                })
+                pcall(function()
+                    Rayfield:Notify({
+                        Title = "Rollback Deactivated",
+                        Content = "Game is saving changes normally",
+                        Duration = 3,
+                        Image = "rbxassetid://4483345998"
+                    })
+                end)
             end
         end
     end,
@@ -132,12 +199,14 @@ local RollbackToggle = MainTab:CreateToggle({
 MainTab:CreateButton({
     Name = "Press if not Satisfied (RollBack)",
     Callback = function()
-        Rayfield:Notify({
-            Title = "Performing Rollback",
-            Content = "Crashing updates before rejoin...",
-            Duration = 2,
-            Image = "rbxassetid://4483345998"
-        })
+        pcall(function()
+            Rayfield:Notify({
+                Title = "Performing Rollback",
+                Content = "Crashing updates before rejoin...",
+                Duration = 2,
+                Image = "rbxassetid://4483345998"
+            })
+        end)
         HardRollback()
     end,
 })
@@ -147,7 +216,9 @@ local StatusLabel = MainTab:CreateLabel({ Name = "Current Mode", Text = "ACTIVE 
 
 spawn(function()
     while task.wait(0.5) do
-        StatusLabel:Set(RollbackToggle.CurrentValue and "ROLLBACK ACTIVE" or "ACTIVE")
+        pcall(function()
+            StatusLabel:Set(RollbackToggle.CurrentValue and "ROLLBACK ACTIVE" or "ACTIVE")
+        end)
     end
 end)
 
@@ -157,6 +228,8 @@ MainTab:CreateKeybind({
     HoldToInteract = false,
     Flag = "RollbackKeybind",
     Callback = function()
-        RollbackToggle:Set(not RollbackToggle.CurrentValue)
+        pcall(function()
+            RollbackToggle:Set(not RollbackToggle.CurrentValue)
+        end)
     end,
 })
