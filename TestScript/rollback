@@ -6,75 +6,105 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
 local rollbackEnabled = false
 local originalStats = {}
-local lagDelay = 0.5
 local heartbeatConnections = {}
-local networkLagEnabled = false
-local originalRemoteEventFire
-local originalRemoteFunctionInvoke
+local propertyWatchers = {}
+local changedConnections = {}
 
--- Enhanced lag simulation functions
-local function EnableNetworkLag()
-    if networkLagEnabled then return end
-    
-    -- Hook RemoteEvent firing
-    originalRemoteEventFire = hookfunction(debug.getupvalue(RemoteEvent.FireServer, 1), function(...)
-        if rollbackEnabled then
-            wait(math.random(0.5, 2.0)) -- Random delay between 0.5-2 seconds
-        end
-        return originalRemoteEventFire(...)
-    end)
-    
-    -- Hook RemoteFunction invoking
-    originalRemoteFunctionInvoke = hookfunction(debug.getupvalue(RemoteFunction.InvokeServer, 1), function(...)
-        if rollbackEnabled then
-            wait(math.random(0.5, 2.0)) -- Random delay between 0.5-2 seconds
-        end
-        return originalRemoteFunctionInvoke(...)
-    end)
-    
-    networkLagEnabled = true
-end
-
-local function DisableNetworkLag()
-    if not networkLagEnabled then return end
-    
-    -- Restore original functions
-    if originalRemoteEventFire then
-        hookfunction(debug.getupvalue(RemoteEvent.FireServer, 1), originalRemoteEventFire)
-    end
-    
-    if originalRemoteFunctionInvoke then
-        hookfunction(debug.getupvalue(RemoteFunction.InvokeServer, 1), originalRemoteFunctionInvoke)
-    end
-    
-    networkLagEnabled = false
-end
-
+-- Universal state freezing
 local function FreezeGameState()
-    -- Store all important character stats
+    -- Store character state
     if LocalPlayer.Character then
-        originalStats.health = LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health
-        originalStats.position = LocalPlayer.Character:GetPivot().Position
-        originalStats.state = LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetState()
+        local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            originalStats.health = humanoid.Health
+            originalStats.maxHealth = humanoid.MaxHealth
+            originalStats.position = LocalPlayer.Character:GetPivot().Position
+            originalStats.state = humanoid:GetState()
+        end
     end
     
-    -- Disable physics and other services
-    for _, service in pairs({workspace.Terrain, game:GetService("PhysicsService")}) do
-        for _, part in pairs(service:GetDescendants()) do
-            if part:IsA("BasePart") then
-                part.Anchored = true
-            end
+    -- Store player data
+    originalStats.playerData = {}
+    for _,v in pairs(LocalPlayer:GetChildren()) do
+        if v:IsA("Folder") or v:IsA("Model") then
+            originalStats.playerData[v.Name] = v:Clone()
         end
+    end
+    
+    -- Prevent property changes
+    propertyWatchers = {}
+    local function watchProperties(instance)
+        for _,prop in pairs(instance.Changed:GetConnections()) do
+            table.insert(propertyWatchers, prop)
+            prop:Disconnect()
+        end
+    end
+    
+    -- Watch important instances
+    if LocalPlayer.Character then
+        watchProperties(LocalPlayer.Character)
+        for _,descendant in pairs(LocalPlayer.Character:GetDescendants()) do
+            watchProperties(descendant)
+        end
+    end
+    
+    -- Watch player data changes
+    for _,child in pairs(LocalPlayer:GetChildren()) do
+        watchProperties(child)
+    end
+    
+    -- Disable changed events
+    changedConnections = {}
+    for _,conn in pairs(getconnections(LocalPlayer.Changed)) do
+        table.insert(changedConnections, conn)
+        conn:Disable()
+    end
+    if LocalPlayer.Character then
+        for _,conn in pairs(getconnections(LocalPlayer.Character.Changed)) do
+            table.insert(changedConnections, conn)
+            conn:Disable()
+        end
+    end
+    
+    -- Slow down the game loop
+    for _,v in pairs(getconnections(RunService.Heartbeat)) do
+        table.insert(heartbeatConnections, v)
+        v:Disable()
+    end
+    for _,v in pairs(getconnections(RunService.Stepped)) do
+        table.insert(heartbeatConnections, v)
+        v:Disable()
+    end
+    for _,v in pairs(getconnections(RunService.RenderStepped)) do
+        table.insert(heartbeatConnections, v)
+        v:Disable()
     end
 end
 
 local function UnfreezeGameState()
-    -- Re-enable physics
-    for _, service in pairs({workspace.Terrain, game:GetService("PhysicsService")}) do
-        for _, part in pairs(service:GetDescendants()) do
-            if part:IsA("BasePart") then
-                part.Anchored = false
+    -- Re-enable all connections
+    for _,v in pairs(heartbeatConnections) do
+        pcall(function() v:Enable() end)
+    end
+    for _,v in pairs(propertyWatchers) do
+        pcall(function() v:Enable() end)
+    end
+    for _,v in pairs(changedConnections) do
+        pcall(function() v:Enable() end)
+    end
+    
+    heartbeatConnections = {}
+    propertyWatchers = {}
+    changedConnections = {}
+    
+    -- Restore player data
+    if originalStats.playerData then
+        for name,data in pairs(originalStats.playerData) do
+            local existing = LocalPlayer:FindFirstChild(name)
+            if existing then
+                existing:Destroy()
             end
+            data:Clone().Parent = LocalPlayer
         end
     end
     
@@ -83,8 +113,17 @@ local function UnfreezeGameState()
         local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
         if humanoid then
             if originalStats.health then humanoid.Health = originalStats.health end
-            if originalStats.position then LocalPlayer.Character:PivotTo(CFrame.new(originalStats.position)) end
-            if originalStats.state then humanoid:ChangeState(originalStats.state) end
+            if originalStats.maxHealth then humanoid.MaxHealth = originalStats.maxHealth end
+            if originalStats.position then 
+                pcall(function()
+                    LocalPlayer.Character:PivotTo(CFrame.new(originalStats.position))
+                end)
+            end
+            if originalStats.state then 
+                pcall(function()
+                    humanoid:ChangeState(originalStats.state)
+                end)
+            end
         end
     end
 end
@@ -92,16 +131,7 @@ end
 local function EnableRollback()
     if rollbackEnabled then return false end
     
-    -- Disable heartbeat to prevent game updates
-    for _,v in pairs(getconnections(RunService.Heartbeat)) do
-        table.insert(heartbeatConnections, v)
-        v:Disable()
-    end
-    
-    -- Enable lag simulation
-    EnableNetworkLag()
     FreezeGameState()
-    
     rollbackEnabled = true
     return true
 end
@@ -109,16 +139,7 @@ end
 local function DisableRollback()
     if not rollbackEnabled then return false end
     
-    -- Re-enable heartbeat connections
-    for _,v in pairs(heartbeatConnections) do
-        pcall(function() v:Enable() end)
-    end
-    heartbeatConnections = {}
-    
-    -- Disable lag simulation
-    DisableNetworkLag()
     UnfreezeGameState()
-    
     rollbackEnabled = false
     return true
 end
@@ -131,8 +152,8 @@ end
 
 -- UI Setup
 local Window = Rayfield:CreateWindow({
-    Name = "Rollback | PolleserHub",
-    LoadingTitle = "Rollback | PolleserHub",
+    Name = "Universal Rollback | PolleserHub",
+    LoadingTitle = "Universal Rollback | PolleserHub",
     LoadingSubtitle = "by Polleser",
     ConfigurationSaving = { Enabled = false },
 })
@@ -152,6 +173,8 @@ local RollbackToggle = MainTab:CreateToggle({
                     Duration = 3,
                     Image = "rbxassetid://4483345998"
                 })
+            else
+                warn("Failed to enable rollback")
             end
         else
             if DisableRollback() then
@@ -161,6 +184,8 @@ local RollbackToggle = MainTab:CreateToggle({
                     Duration = 3,
                     Image = "rbxassetid://4483345998"
                 })
+            else
+                warn("Failed to disable rollback")
             end
         end
     end,
@@ -179,15 +204,6 @@ MainTab:CreateButton({
     end,
 })
 
-MainTab:CreateSection("Status")
-local StatusLabel = MainTab:CreateLabel({ Name = "Current Mode", Text = "ACTIVE (Changes save)" })
-
-spawn(function()
-    while task.wait(0.5) do
-        StatusLabel:Set(RollbackToggle.CurrentValue and "ROLLBACK ACTIVE (Changes not saving)" or "ACTIVE (Changes save)")
-    end
-end)
-
 MainTab:CreateKeybind({
     Name = "Quick Toggle (Default: N)",
     CurrentKeybind = "N",
@@ -198,23 +214,10 @@ MainTab:CreateKeybind({
     end,
 })
 
-MainTab:CreateSlider({
-    Name = "Network Lag Intensity",
-    Range = {0, 5},
-    Increment = 0.5,
-    Suffix = "seconds",
-    CurrentValue = 0.5,
-    Flag = "LagIntensity",
-    Callback = function(Value)
-        lagDelay = Value
-    end,
-})
+local StatusLabel = MainTab:CreateLabel("Status: INACTIVE")
 
-MainTab:CreateToggle({
-    Name = "Freeze Physics (More convincing)",
-    CurrentValue = true,
-    Flag = "FreezePhysics",
-    Callback = function(Value)
-        -- This is already handled in the main rollback functions
-    end,
-})
+spawn(function()
+    while task.wait(0.5) do
+        StatusLabel:Set(RollbackToggle.CurrentValue and "ROLLBACK ACTIVE (Changes not saving)" or "ACTIVE (Changes save)")
+    end
+end)
