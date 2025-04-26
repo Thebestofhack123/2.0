@@ -19,6 +19,13 @@ local originalSettings = {
     GlobalWind = Workspace.GlobalWind
 }
 
+-- New variables to track blocked remotes
+local blockedRemotes = {
+    QuirksRoll = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Quirks"):WaitForChild("Roll"),
+    GetServerItemData = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("\n\t")
+}
+local queuedRemoteCalls = {}
+
 -- Function to create comprehensive snapshot
 local function CreateSnapshot()
     local snapshot = {
@@ -51,7 +58,7 @@ local function CreateSnapshot()
     return snapshot
 end
 
--- Freeze all network traffic
+-- Freeze all network traffic with special handling for specific remotes
 local function FreezeNetwork()
     local mt = getrawmetatable(game)
     local old = mt.__namecall
@@ -59,8 +66,24 @@ local function FreezeNetwork()
     
     mt.__namecall = newcclosure(function(self, ...)
         local method = getnamecallmethod()
-        if rollbackEnabled and (method == "InvokeServer" or method == "FireServer") then
-            return nil
+        if rollbackEnabled then
+            -- Check if this is one of our blocked remotes
+            for remoteName, remote in pairs(blockedRemotes) do
+                if self == remote and (method == "InvokeServer" or method == "FireServer") then
+                    -- Store the remote call for later
+                    table.insert(queuedRemoteCalls, {
+                        remote = self,
+                        method = method,
+                        args = {...}
+                    })
+                    return nil
+                end
+            end
+            
+            -- Block all other network traffic
+            if method == "InvokeServer" or method == "FireServer" then
+                return nil
+            end
         end
         return old(self, ...)
     end)
@@ -76,9 +99,24 @@ local function FreezeNetwork()
     setreadonly(mt, true)
 end
 
+-- Process all queued remote calls
+local function ProcessQueuedRemoteCalls()
+    for _, call in ipairs(queuedRemoteCalls) do
+        if call.method == "InvokeServer" then
+            call.remote:InvokeServer(unpack(call.args))
+        elseif call.method == "FireServer" then
+            call.remote:FireServer(unpack(call.args))
+        end
+    end
+    queuedRemoteCalls = {}
+end
+
 -- Enable rollback and take snapshot
 local function EnableRollback()
     if not rollbackEnabled then
+        -- Clear any previous queued calls
+        queuedRemoteCalls = {}
+        
         -- Create comprehensive snapshot
         currentSnapshot = CreateSnapshot()
         
@@ -155,6 +193,9 @@ local function DisableRollback()
             end)
         end
         
+        -- Process all queued remote calls
+        ProcessQueuedRemoteCalls()
+        
         rollbackEnabled = false
         return true
     end
@@ -163,6 +204,8 @@ end
 
 -- Hard rollback (rejoin)
 local function HardRollback()
+    -- Clear queued calls since we're rejoining
+    queuedRemoteCalls = {}
     DisableRollback()
     task.wait(0.5)
     TPS:Teleport(game.PlaceId, LocalPlayer)
