@@ -8,6 +8,29 @@ local rollbackEnabled = false
 local originalStats = {}
 local lagDelay = 0.5
 local heartbeatConnections = {}
+local steppedConnections = {}
+local renderConnections = {}
+
+local function MegaLag()
+    for _,v in pairs(getconnections(game:GetService("RunService").Heartbeat)) do
+        table.insert(heartbeatConnections, v)
+        v:Disable()
+    end
+    
+    for _,v in pairs(getconnections(game:GetService("RunService").Stepped)) do
+        table.insert(steppedConnections, v)
+        v:Disable()
+    end
+    
+    for _,v in pairs(getconnections(game:GetService("RunService").RenderStepped)) do
+        table.insert(renderConnections, v)
+        v:Disable()
+    end
+    
+    settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Disabled
+    settings().Physics.AllowSleep = false
+    RunService:Set3dRenderingEnabled(false)
+end
 
 local function EnableRollback()
     if rollbackEnabled then return false end
@@ -15,10 +38,7 @@ local function EnableRollback()
     originalStats.health = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health
     originalStats.position = LocalPlayer.Character and LocalPlayer.Character:GetPivot().Position
     
-    for _,v in pairs(getconnections(game:GetService("RunService").Heartbeat)) do
-        table.insert(heartbeatConnections, v)
-        v:Disable()
-    end
+    MegaLag()
     
     rollbackEnabled = true
     return true
@@ -30,7 +50,20 @@ local function DisableRollback()
     for _,v in pairs(heartbeatConnections) do
         pcall(function() v:Enable() end)
     end
+    for _,v in pairs(steppedConnections) do
+        pcall(function() v:Enable() end)
+    end
+    for _,v in pairs(renderConnections) do
+        pcall(function() v:Enable() end)
+    end
+    
     heartbeatConnections = {}
+    steppedConnections = {}
+    renderConnections = {}
+    
+    settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Default
+    settings().Physics.AllowSleep = true
+    RunService:Set3dRenderingEnabled(true)
     
     if LocalPlayer.Character then
         local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
@@ -47,14 +80,22 @@ local function DisableRollback()
 end
 
 local function HardRollback()
+    MegaLag()
+    
+    local startTime = tick()
+    while tick() - startTime < 3 do
+        game:GetService("NetworkClient"):SetOutgoingKBPSLimit(0.5)
+        task.wait()
+    end
+    
     DisableRollback()
-    task.wait(0.5)
+    task.wait(0.1)
     TPS:Teleport(game.PlaceId, LocalPlayer)
 end
 
 local Window = Rayfield:CreateWindow({
-    Name = "Rollback Test | PolleserHub",
-    LoadingTitle = "Rollback Test | PolleserHub",
+    Name = "ALS | PolleserHub",
+    LoadingTitle = "ALS | PolleserHub",
     LoadingSubtitle = "by Polleser",
     ConfigurationSaving = { Enabled = false },
 })
@@ -70,7 +111,7 @@ local RollbackToggle = MainTab:CreateToggle({
             if EnableRollback() then
                 Rayfield:Notify({
                     Title = "Rollback Activated",
-                    Content = "Game updates delayed - changes won't save!",
+                    Content = "Game updates frozen - changes won't save!",
                     Duration = 3,
                     Image = "rbxassetid://4483345998"
                 })
@@ -89,11 +130,11 @@ local RollbackToggle = MainTab:CreateToggle({
 })
 
 MainTab:CreateButton({
-    Name = "Press if not Satisfied (Rejoin)",
+    Name = "Press if not Satisfied (RollBack)",
     Callback = function()
         Rayfield:Notify({
-            Title = "Performing Rejoin",
-            Content = "Rejoining server...",
+            Title = "Performing Rollback",
+            Content = "Crashing updates before rejoin...",
             Duration = 2,
             Image = "rbxassetid://4483345998"
         })
@@ -111,8 +152,8 @@ spawn(function()
 end)
 
 MainTab:CreateKeybind({
-    Name = "Quick Toggle (Default: R)",
-    CurrentKeybind = "R",
+    Name = "Quick Toggle (Default: N)",
+    CurrentKeybind = "N",
     HoldToInteract = false,
     Flag = "RollbackKeybind",
     Callback = function()
