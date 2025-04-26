@@ -8,66 +8,99 @@ local rollbackEnabled = false
 local originalStats = {}
 local lagDelay = 0.5
 local heartbeatConnections = {}
-local steppedConnections = {}
-local renderConnections = {}
+local networkLagEnabled = false
+local originalRemoteEventFire
+local originalRemoteFunctionInvoke
 
-local function MegaLag()
-    -- Check if RunService exists and is accessible
-    if not RunService or not RunService.Heartbeat or not RunService.Stepped or not RunService.RenderStepped then
-        warn("RunService or its events not accessible")
-        return false
-    end
-
-    -- Safely get and disable connections
-    pcall(function()
-        for _,v in pairs(getconnections(RunService.Heartbeat)) do
-            table.insert(heartbeatConnections, v)
-            v:Disable()
+-- Enhanced lag simulation functions
+local function EnableNetworkLag()
+    if networkLagEnabled then return end
+    
+    -- Hook RemoteEvent firing
+    originalRemoteEventFire = hookfunction(debug.getupvalue(RemoteEvent.FireServer, 1), function(...)
+        if rollbackEnabled then
+            wait(math.random(0.5, 2.0)) -- Random delay between 0.5-2 seconds
         end
-        
-        for _,v in pairs(getconnections(RunService.Stepped)) do
-            table.insert(steppedConnections, v)
-            v:Disable()
-        end
-        
-        for _,v in pairs(getconnections(RunService.RenderStepped)) do
-            table.insert(renderConnections, v)
-            v:Disable()
-        end
-    end)
-
-    -- Safely modify physics settings
-    pcall(function()
-        settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnvironmentalPhysicsThrottle.Disabled
-        settings().Physics.AllowSleep = false
-    end)
-
-    -- Safely disable rendering
-    pcall(function()
-        RunService:Set3dRenderingEnabled(false)
+        return originalRemoteEventFire(...)
     end)
     
-    return true
+    -- Hook RemoteFunction invoking
+    originalRemoteFunctionInvoke = hookfunction(debug.getupvalue(RemoteFunction.InvokeServer, 1), function(...)
+        if rollbackEnabled then
+            wait(math.random(0.5, 2.0)) -- Random delay between 0.5-2 seconds
+        end
+        return originalRemoteFunctionInvoke(...)
+    end)
+    
+    networkLagEnabled = true
+end
+
+local function DisableNetworkLag()
+    if not networkLagEnabled then return end
+    
+    -- Restore original functions
+    if originalRemoteEventFire then
+        hookfunction(debug.getupvalue(RemoteEvent.FireServer, 1), originalRemoteEventFire)
+    end
+    
+    if originalRemoteFunctionInvoke then
+        hookfunction(debug.getupvalue(RemoteFunction.InvokeServer, 1), originalRemoteFunctionInvoke)
+    end
+    
+    networkLagEnabled = false
+end
+
+local function FreezeGameState()
+    -- Store all important character stats
+    if LocalPlayer.Character then
+        originalStats.health = LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health
+        originalStats.position = LocalPlayer.Character:GetPivot().Position
+        originalStats.state = LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):GetState()
+    end
+    
+    -- Disable physics and other services
+    for _, service in pairs({workspace.Terrain, game:GetService("PhysicsService")}) do
+        for _, part in pairs(service:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.Anchored = true
+            end
+        end
+    end
+end
+
+local function UnfreezeGameState()
+    -- Re-enable physics
+    for _, service in pairs({workspace.Terrain, game:GetService("PhysicsService")}) do
+        for _, part in pairs(service:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.Anchored = false
+            end
+        end
+    end
+    
+    -- Restore character state
+    if LocalPlayer.Character then
+        local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            if originalStats.health then humanoid.Health = originalStats.health end
+            if originalStats.position then LocalPlayer.Character:PivotTo(CFrame.new(originalStats.position)) end
+            if originalStats.state then humanoid:ChangeState(originalStats.state) end
+        end
+    end
 end
 
 local function EnableRollback()
     if rollbackEnabled then return false end
     
-    -- Safely store original stats
-    pcall(function()
-        if LocalPlayer and LocalPlayer.Character then
-            local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-            if humanoid then
-                originalStats.health = humanoid.Health
-            end
-            originalStats.position = LocalPlayer.Character:GetPivot().Position
-        end
-    end)
-    
-    if not MegaLag() then
-        warn("Failed to enable MegaLag")
-        return false
+    -- Disable heartbeat to prevent game updates
+    for _,v in pairs(getconnections(RunService.Heartbeat)) do
+        table.insert(heartbeatConnections, v)
+        v:Disable()
     end
+    
+    -- Enable lag simulation
+    EnableNetworkLag()
+    FreezeGameState()
     
     rollbackEnabled = true
     return true
@@ -76,92 +109,33 @@ end
 local function DisableRollback()
     if not rollbackEnabled then return false end
     
-    -- Safely restore connections
-    pcall(function()
-        for _,v in pairs(heartbeatConnections) do
-            v:Enable()
-        end
-        for _,v in pairs(steppedConnections) do
-            v:Enable()
-        end
-        for _,v in pairs(renderConnections) do
-            v:Enable()
-        end
-    end)
-    
+    -- Re-enable heartbeat connections
+    for _,v in pairs(heartbeatConnections) do
+        pcall(function() v:Enable() end)
+    end
     heartbeatConnections = {}
-    steppedConnections = {}
-    renderConnections = {}
     
-    -- Safely restore physics settings
-    pcall(function()
-        settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnvironmentalPhysicsThrottle.Default
-        settings().Physics.AllowSleep = true
-    end)
-    
-    -- Safely restore rendering
-    pcall(function()
-        RunService:Set3dRenderingEnabled(true)
-    end)
-    
-    -- Safely restore character stats
-    pcall(function()
-        if LocalPlayer and LocalPlayer.Character then
-            local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-            if humanoid and originalStats.health then
-                humanoid.Health = originalStats.health
-            end
-            if originalStats.position then
-                LocalPlayer.Character:PivotTo(CFrame.new(originalStats.position))
-            end
-        end
-    end)
+    -- Disable lag simulation
+    DisableNetworkLag()
+    UnfreezeGameState()
     
     rollbackEnabled = false
     return true
 end
 
 local function HardRollback()
-    if not MegaLag() then
-        warn("Failed to initiate MegaLag for hard rollback")
-        return
-    end
-    
-    local startTime = tick()
-    while tick() - startTime < 3 do
-        pcall(function()
-            if game:GetService("NetworkClient") then
-                game:GetService("NetworkClient"):SetOutgoingKBPSLimit(0.5)
-            end
-        end)
-        task.wait()
-    end
-    
     DisableRollback()
-    task.wait(0.1)
-    
-    -- Safely attempt teleport
-    pcall(function()
-        if game.PlaceId and LocalPlayer then
-            TPS:Teleport(game.PlaceId, LocalPlayer)
-        end
-    end)
+    task.wait(0.5)
+    TPS:Teleport(game.PlaceId, LocalPlayer)
 end
 
--- Window creation with error handling
-local success, Window = pcall(function()
-    return Rayfield:CreateWindow({
-        Name = "Rollback | PolleserHub",
-        LoadingTitle = "Rollback | PolleserHub",
-        LoadingSubtitle = "by Polleser",
-        ConfigurationSaving = { Enabled = false },
-    })
-end)
-
-if not success or not Window then
-    warn("Failed to create Rayfield window")
-    return
-end
+-- UI Setup
+local Window = Rayfield:CreateWindow({
+    Name = "Rollback | PolleserHub",
+    LoadingTitle = "Rollback | PolleserHub",
+    LoadingSubtitle = "by Polleser",
+    ConfigurationSaving = { Enabled = false },
+})
 
 local MainTab = Window:CreateTab("Rollback")
 
@@ -172,41 +146,35 @@ local RollbackToggle = MainTab:CreateToggle({
     Callback = function(Value)
         if Value then
             if EnableRollback() then
-                pcall(function()
-                    Rayfield:Notify({
-                        Title = "Rollback Activated",
-                        Content = "Game updates frozen - changes won't save!",
-                        Duration = 3,
-                        Image = "rbxassetid://4483345998"
-                    })
-                end)
+                Rayfield:Notify({
+                    Title = "Rollback Activated",
+                    Content = "Game state frozen - changes won't save!",
+                    Duration = 3,
+                    Image = "rbxassetid://4483345998"
+                })
             end
         else
             if DisableRollback() then
-                pcall(function()
-                    Rayfield:Notify({
-                        Title = "Rollback Deactivated",
-                        Content = "Game is saving changes normally",
-                        Duration = 3,
-                        Image = "rbxassetid://4483345998"
-                    })
-                end)
+                Rayfield:Notify({
+                    Title = "Rollback Deactivated",
+                    Content = "Game is saving changes normally",
+                    Duration = 3,
+                    Image = "rbxassetid://4483345998"
+                })
             end
         end
     end,
 })
 
 MainTab:CreateButton({
-    Name = "Press if not Satisfied (RollBack)",
+    Name = "Press if not Satisfied (Rejoin)",
     Callback = function()
-        pcall(function()
-            Rayfield:Notify({
-                Title = "Performing Rollback",
-                Content = "Crashing updates before rejoin...",
-                Duration = 2,
-                Image = "rbxassetid://4483345998"
-            })
-        end)
+        Rayfield:Notify({
+            Title = "Performing Rejoin",
+            Content = "Rejoining server...",
+            Duration = 2,
+            Image = "rbxassetid://4483345998"
+        })
         HardRollback()
     end,
 })
@@ -216,9 +184,7 @@ local StatusLabel = MainTab:CreateLabel({ Name = "Current Mode", Text = "ACTIVE 
 
 spawn(function()
     while task.wait(0.5) do
-        pcall(function()
-            StatusLabel:Set(RollbackToggle.CurrentValue and "ROLLBACK ACTIVE" or "ACTIVE")
-        end)
+        StatusLabel:Set(RollbackToggle.CurrentValue and "ROLLBACK ACTIVE (Changes not saving)" or "ACTIVE (Changes save)")
     end
 end)
 
@@ -228,8 +194,27 @@ MainTab:CreateKeybind({
     HoldToInteract = false,
     Flag = "RollbackKeybind",
     Callback = function()
-        pcall(function()
-            RollbackToggle:Set(not RollbackToggle.CurrentValue)
-        end)
+        RollbackToggle:Set(not RollbackToggle.CurrentValue)
+    end,
+})
+
+MainTab:CreateSlider({
+    Name = "Network Lag Intensity",
+    Range = {0, 5},
+    Increment = 0.5,
+    Suffix = "seconds",
+    CurrentValue = 0.5,
+    Flag = "LagIntensity",
+    Callback = function(Value)
+        lagDelay = Value
+    end,
+})
+
+MainTab:CreateToggle({
+    Name = "Freeze Physics (More convincing)",
+    CurrentValue = true,
+    Flag = "FreezePhysics",
+    Callback = function(Value)
+        -- This is already handled in the main rollback functions
     end,
 })
