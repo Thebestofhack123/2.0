@@ -1,159 +1,177 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
+-- Services
 local Players = game:GetService("Players")
 local TPS = game:GetService("TeleportService")
 local RunService = game:GetService("RunService")
+local Physics = settings().Physics
+local Workspace = game:GetService("Workspace")
+
+-- Variables
 local LocalPlayer = Players.LocalPlayer
+local currentSnapshot = nil
 local rollbackEnabled = false
-local originalStats = {}
-local heartbeatConnections = {}
-local propertyWatchers = {}
-local changedConnections = {}
+local originalTimestep = RunService.Heartbeat:Wait()
+local originalSettings = {
+    PhysicsEnvironmentalThrottle = Physics.PhysicsEnvironmentalThrottle,
+    AllowSleep = Physics.AllowSleep,
+    Gravity = Workspace.Gravity,
+    GlobalWind = Workspace.GlobalWind
+}
 
--- Universal state freezing
-local function FreezeGameState()
-    -- Store character state
+-- Function to create comprehensive snapshot
+local function CreateSnapshot()
+    local snapshot = {
+        characterState = {},
+        position = nil,
+        camera = nil
+    }
+    
     if LocalPlayer.Character then
         local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
         if humanoid then
-            originalStats.health = humanoid.Health
-            originalStats.maxHealth = humanoid.MaxHealth
-            originalStats.position = LocalPlayer.Character:GetPivot().Position
-            originalStats.state = humanoid:GetState()
+            snapshot.characterState = {
+                health = humanoid.Health,
+                maxHealth = humanoid.MaxHealth,
+                walkSpeed = humanoid.WalkSpeed,
+                jumpPower = humanoid.JumpPower,
+                autoRotate = humanoid.AutoRotate
+            }
         end
+        snapshot.position = LocalPlayer.Character:GetPivot().Position
     end
     
-    -- Store player data
-    originalStats.playerData = {}
-    for _,v in pairs(LocalPlayer:GetChildren()) do
-        if v:IsA("Folder") or v:IsA("Model") then
-            originalStats.playerData[v.Name] = v:Clone()
-        end
+    if workspace.CurrentCamera then
+        snapshot.camera = {
+            CFrame = workspace.CurrentCamera.CFrame,
+            FieldOfView = workspace.CurrentCamera.FieldOfView
+        }
     end
     
-    -- Prevent property changes
-    propertyWatchers = {}
-    local function watchProperties(instance)
-        for _,prop in pairs(instance.Changed:GetConnections()) do
-            table.insert(propertyWatchers, prop)
-            prop:Disconnect()
-        end
-    end
-    
-    -- Watch important instances
-    if LocalPlayer.Character then
-        watchProperties(LocalPlayer.Character)
-        for _,descendant in pairs(LocalPlayer.Character:GetDescendants()) do
-            watchProperties(descendant)
-        end
-    end
-    
-    -- Watch player data changes
-    for _,child in pairs(LocalPlayer:GetChildren()) do
-        watchProperties(child)
-    end
-    
-    -- Disable changed events
-    changedConnections = {}
-    for _,conn in pairs(getconnections(LocalPlayer.Changed)) do
-        table.insert(changedConnections, conn)
-        conn:Disable()
-    end
-    if LocalPlayer.Character then
-        for _,conn in pairs(getconnections(LocalPlayer.Character.Changed)) do
-            table.insert(changedConnections, conn)
-            conn:Disable()
-        end
-    end
-    
-    -- Slow down the game loop
-    for _,v in pairs(getconnections(RunService.Heartbeat)) do
-        table.insert(heartbeatConnections, v)
-        v:Disable()
-    end
-    for _,v in pairs(getconnections(RunService.Stepped)) do
-        table.insert(heartbeatConnections, v)
-        v:Disable()
-    end
-    for _,v in pairs(getconnections(RunService.RenderStepped)) do
-        table.insert(heartbeatConnections, v)
-        v:Disable()
-    end
+    return snapshot
 end
 
-local function UnfreezeGameState()
-    -- Re-enable all connections
-    for _,v in pairs(heartbeatConnections) do
-        pcall(function() v:Enable() end)
-    end
-    for _,v in pairs(propertyWatchers) do
-        pcall(function() v:Enable() end)
-    end
-    for _,v in pairs(changedConnections) do
-        pcall(function() v:Enable() end)
-    end
+-- Freeze all network traffic
+local function FreezeNetwork()
+    local mt = getrawmetatable(game)
+    local old = mt.__namecall
+    setreadonly(mt, false)
     
-    heartbeatConnections = {}
-    propertyWatchers = {}
-    changedConnections = {}
-    
-    -- Restore player data
-    if originalStats.playerData then
-        for name,data in pairs(originalStats.playerData) do
-            local existing = LocalPlayer:FindFirstChild(name)
-            if existing then
-                existing:Destroy()
-            end
-            data:Clone().Parent = LocalPlayer
+    mt.__namecall = newcclosure(function(self, ...)
+        local method = getnamecallmethod()
+        if rollbackEnabled and (method == "InvokeServer" or method == "FireServer") then
+            return nil
         end
-    end
+        return old(self, ...)
+    end)
     
-    -- Restore character state
-    if LocalPlayer.Character then
-        local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-        if humanoid then
-            if originalStats.health then humanoid.Health = originalStats.health end
-            if originalStats.maxHealth then humanoid.MaxHealth = originalStats.maxHealth end
-            if originalStats.position then 
-                pcall(function()
-                    LocalPlayer.Character:PivotTo(CFrame.new(originalStats.position))
-                end)
-            end
-            if originalStats.state then 
-                pcall(function()
-                    humanoid:ChangeState(originalStats.state)
-                end)
-            end
+    local oldIndex = mt.__index
+    mt.__index = newcclosure(function(self, k)
+        if rollbackEnabled and tostring(k) == "Changed" then
+            return function() return nil end
         end
-    end
+        return oldIndex(self, k)
+    end)
+    
+    setreadonly(mt, true)
 end
 
+-- Enable rollback and take snapshot
 local function EnableRollback()
-    if rollbackEnabled then return false end
-    
-    FreezeGameState()
-    rollbackEnabled = true
-    return true
+    if not rollbackEnabled then
+        -- Create comprehensive snapshot
+        currentSnapshot = CreateSnapshot()
+        
+        -- Freeze physics and environment
+        Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Disabled
+        Physics.AllowSleep = false
+        Workspace.Gravity = 0
+        Workspace.GlobalWind = Vector3.new(0, 0, 0)
+        
+        -- Freeze remote events
+        FreezeNetwork()
+        
+        -- Slow down the game simulation
+        RunService:SetTimeScale(0.0001) -- Almost completely frozen
+        
+        -- Disable rendering (optional)
+        if pcall(function() RunService:Set3dRenderingEnabled(false) end) then
+            -- Executor supports this call
+        end
+        
+        rollbackEnabled = true
+        return true
+    end
+    return false
 end
 
+-- Disable rollback and restore state
 local function DisableRollback()
-    if not rollbackEnabled then return false end
-    
-    UnfreezeGameState()
-    rollbackEnabled = false
-    return true
+    if rollbackEnabled then
+        -- Restore physics and environment
+        Physics.PhysicsEnvironmentalThrottle = originalSettings.PhysicsEnvironmentalThrottle
+        Physics.AllowSleep = originalSettings.AllowSleep
+        Workspace.Gravity = originalSettings.Gravity
+        Workspace.GlobalWind = originalSettings.GlobalWind
+        
+        -- Restore time scale
+        RunService:SetTimeScale(1)
+        
+        -- Re-enable rendering
+        if pcall(function() RunService:Set3dRenderingEnabled(true) end) then
+            -- Executor supports this call
+        end
+        
+        -- Restore network traffic
+        local mt = getrawmetatable(game)
+        setreadonly(mt, false)
+        mt.__namecall = nil
+        mt.__index = nil
+        setreadonly(mt, true)
+        
+        -- Restore character from snapshot
+        if LocalPlayer.Character and currentSnapshot then
+            local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                for k,v in pairs(currentSnapshot.characterState) do
+                    if humanoid[k] ~= nil then
+                        pcall(function() humanoid[k] = v end)
+                    end
+                end
+            end
+            
+            if currentSnapshot.position then
+                pcall(function()
+                    LocalPlayer.Character:PivotTo(CFrame.new(currentSnapshot.position))
+                end)
+            end
+        end
+        
+        -- Restore camera
+        if currentSnapshot and currentSnapshot.camera and workspace.CurrentCamera then
+            pcall(function()
+                workspace.CurrentCamera.CFrame = currentSnapshot.camera.CFrame
+                workspace.CurrentCamera.FieldOfView = currentSnapshot.camera.FieldOfView
+            end)
+        end
+        
+        rollbackEnabled = false
+        return true
+    end
+    return false
 end
 
+-- Hard rollback (rejoin)
 local function HardRollback()
     DisableRollback()
     task.wait(0.5)
     TPS:Teleport(game.PlaceId, LocalPlayer)
 end
 
--- UI Setup
+-- Create UI
 local Window = Rayfield:CreateWindow({
-    Name = "Universal Rollback | PolleserHub",
-    LoadingTitle = "Universal Rollback | PolleserHub",
+    Name = "Rollback | PolleserHub",
+    LoadingTitle = "Rollback | PolleserHub",
     LoadingSubtitle = "by Polleser",
     ConfigurationSaving = { Enabled = false },
 })
@@ -161,38 +179,34 @@ local Window = Rayfield:CreateWindow({
 local MainTab = Window:CreateTab("Rollback")
 
 local RollbackToggle = MainTab:CreateToggle({
-    Name = "Rollback (Turn On Before Rolling)",
+    Name = "Rollback (Toggle Before Rolling)",
     CurrentValue = false,
     Flag = "RollbackToggle",
     Callback = function(Value)
         if Value then
             if EnableRollback() then
                 Rayfield:Notify({
-                    Title = "Rollback Activated",
-                    Content = "Game state frozen - changes won't save!",
+                    Title = "Enabled Rollback",
+                    Content = "Enabled Rollback (it'll freeze the game)",
                     Duration = 3,
                     Image = "rbxassetid://4483345998"
                 })
-            else
-                warn("Failed to enable rollback")
             end
         else
             if DisableRollback() then
                 Rayfield:Notify({
-                    Title = "Rollback Deactivated",
+                    Title = "State Disabled Rollback",
                     Content = "Game is saving changes normally",
                     Duration = 3,
                     Image = "rbxassetid://4483345998"
                 })
-            else
-                warn("Failed to disable rollback")
             end
         end
     end,
 })
 
 MainTab:CreateButton({
-    Name = "Press if not Satisfied (Rejoin)",
+    Name = "Press if result not good (Rejoin)",
     Callback = function()
         Rayfield:Notify({
             Title = "Performing Rejoin",
@@ -213,11 +227,3 @@ MainTab:CreateKeybind({
         RollbackToggle:Set(not RollbackToggle.CurrentValue)
     end,
 })
-
-local StatusLabel = MainTab:CreateLabel("Status: INACTIVE")
-
-spawn(function()
-    while task.wait(0.5) do
-        StatusLabel:Set(RollbackToggle.CurrentValue and "ROLLBACK ACTIVE (Changes not saving)" or "ACTIVE (Changes save)")
-    end
-end)
