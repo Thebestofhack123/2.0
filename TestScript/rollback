@@ -1,4 +1,12 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+-- Executor-friendly Rayfield load with fallback
+local Rayfield = nil
+local success, err = pcall(function()
+    Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+end)
+
+if not success then
+    Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Rayfield/main/source"))()
+end
 
 -- Services
 local Players = game:GetService("Players")
@@ -6,6 +14,7 @@ local TPS = game:GetService("TeleportService")
 local RunService = game:GetService("RunService")
 local Physics = settings().Physics
 local Workspace = game:GetService("Workspace")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 -- Variables
 local LocalPlayer = Players.LocalPlayer
@@ -19,21 +28,52 @@ local originalSettings = {
     GlobalWind = Workspace.GlobalWind
 }
 
--- New variables to track blocked remotes
-local blockedRemotes = {
-    QuirksRoll = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Quirks"):WaitForChild("Roll"),
-    GetServerItemData = game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("\n\t")
-}
+-- Enhanced remote detection
+local function FindRemote(parent, names)
+    for _, name in pairs(names) do
+        local remote = parent:FindFirstChild(name, true)
+        if remote and (remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction")) then
+            return remote
+        end
+    end
+    return nil
+end
+
+local blockedRemotes = {}
 local queuedRemoteCalls = {}
 
--- Function to create comprehensive snapshot
+-- Function to block all network traffic
+local function BlockAllNetwork()
+    -- Find and block all remote events/functions
+    for _, instance in pairs(ReplicatedStorage:GetDescendants()) do
+        if (instance:IsA("RemoteEvent") or instance:IsA("RemoteFunction")) and not blockedRemotes[instance] then
+            blockedRemotes[instance] = true
+        end
+    end
+    
+    -- Also check other important services
+    for _, serviceName in pairs({"ReplicatedFirst", "ServerScriptService", "ServerStorage"}) do
+        local service = game:GetService(serviceName)
+        if service then
+            for _, instance in pairs(service:GetDescendants()) do
+                if (instance:IsA("RemoteEvent") or instance:IsA("RemoteFunction")) and not blockedRemotes[instance] then
+                    blockedRemotes[instance] = true
+                end
+            end
+        end
+    end
+end
+
+-- Comprehensive snapshot with more game state
 local function CreateSnapshot()
     local snapshot = {
         characterState = {},
         position = nil,
-        camera = nil
+        camera = nil,
+        time = os.time(),
+        playerStats = {}
     }
-    
+
     if LocalPlayer.Character then
         local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
         if humanoid then
@@ -42,100 +82,135 @@ local function CreateSnapshot()
                 maxHealth = humanoid.MaxHealth,
                 walkSpeed = humanoid.WalkSpeed,
                 jumpPower = humanoid.JumpPower,
-                autoRotate = humanoid.AutoRotate
+                autoRotate = humanoid.AutoRotate,
+                state = humanoid:GetState()
             }
         end
+        
+        -- Save all important parts
         snapshot.position = LocalPlayer.Character:GetPivot().Position
+        snapshot.parts = {}
+        for _, part in pairs(LocalPlayer.Character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                snapshot.parts[part.Name] = {
+                    Position = part.Position,
+                    CFrame = part.CFrame,
+                    Size = part.Size,
+                    Anchored = part.Anchored
+                }
+            end
+        end
     end
-    
+
+    -- Save camera state
     if workspace.CurrentCamera then
         snapshot.camera = {
             CFrame = workspace.CurrentCamera.CFrame,
-            FieldOfView = workspace.CurrentCamera.FieldOfView
+            FieldOfView = workspace.CurrentCamera.FieldOfView,
+            CameraType = workspace.CurrentCamera.CameraType
         }
     end
-    
+
+    -- Save player stats if available
+    for _, stat in pairs(LocalPlayer:GetChildren()) do
+        if stat:IsA("NumberValue") or stat:IsA("IntValue") or stat:IsA("BoolValue") then
+            snapshot.playerStats[stat.Name] = stat.Value
+        end
+    end
+
     return snapshot
 end
 
--- Freeze all network traffic with special handling for specific remotes
+-- Enhanced network freezing
+local oldNamecall, oldIndex
 local function FreezeNetwork()
     local mt = getrawmetatable(game)
-    local old = mt.__namecall
-    setreadonly(mt, false)
+    if not mt then return end
     
-    mt.__namecall = newcclosure(function(self, ...)
+    oldNamecall = oldNamecall or mt.__namecall
+    oldIndex = oldIndex or mt.__index
+    
+    setreadonly(mt, false)
+
+    mt.__namecall = function(self, ...)
         local method = getnamecallmethod()
         if rollbackEnabled then
-            -- Check if this is one of our blocked remotes
-            for remoteName, remote in pairs(blockedRemotes) do
-                if self == remote and (method == "InvokeServer" or method == "FireServer") then
-                    -- Store the remote call for later
-                    table.insert(queuedRemoteCalls, {
-                        remote = self,
-                        method = method,
-                        args = {...}
-                    })
-                    return nil
-                end
+            -- Block all remote communication
+            if (method == "InvokeServer" or method == "FireServer") then
+                table.insert(queuedRemoteCalls, {
+                    remote = self,
+                    method = method,
+                    args = {...}
+                })
+                return nil
             end
             
-            -- Block all other network traffic
-            if method == "InvokeServer" or method == "FireServer" then
+            -- Block other potentially dangerous calls
+            if method == "Kick" or method == "Destroy" then
                 return nil
             end
         end
-        return old(self, ...)
-    end)
-    
-    local oldIndex = mt.__index
-    mt.__index = newcclosure(function(self, k)
-        if rollbackEnabled and tostring(k) == "Changed" then
-            return function() return nil end
+        return oldNamecall(self, ...)
+    end
+
+    mt.__index = function(self, k)
+        if rollbackEnabled then
+            -- Prevent changes from being detected
+            if tostring(k) == "Changed" then
+                return function() return nil end
+            end
+            
+            -- Prevent certain properties from being accessed
+            if tostring(k) == "Parent" or tostring(k) == "ClassName" then
+                return oldIndex(self, k)
+            end
         end
         return oldIndex(self, k)
-    end)
-    
+    end
+
     setreadonly(mt, true)
 end
 
--- Process all queued remote calls
-local function ProcessQueuedRemoteCalls()
-    for _, call in ipairs(queuedRemoteCalls) do
-        if call.method == "InvokeServer" then
-            call.remote:InvokeServer(unpack(call.args))
-        elseif call.method == "FireServer" then
-            call.remote:FireServer(unpack(call.args))
-        end
-    end
-    queuedRemoteCalls = {}
-end
-
--- Enable rollback and take snapshot
-local function EnableRollback()
-    if not rollbackEnabled then
-        -- Clear any previous queued calls
-        queuedRemoteCalls = {}
-        
-        -- Create comprehensive snapshot
-        currentSnapshot = CreateSnapshot()
-        
-        -- Freeze physics and environment
+-- Freeze the entire game state
+local function FreezeGameState()
+    -- Freeze physics
+    pcall(function()
         Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Disabled
         Physics.AllowSleep = false
         Workspace.Gravity = 0
         Workspace.GlobalWind = Vector3.new(0, 0, 0)
+    end)
+    
+    -- Freeze time
+    pcall(function() 
+        RunService:SetTimeScale(0.0001)
+        RunService:Set3dRenderingEnabled(false)
+    end)
+    
+    -- Freeze character
+    if LocalPlayer.Character then
+        for _, part in pairs(LocalPlayer.Character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                pcall(function() part.Anchored = true end)
+                pcall(function() part.CanCollide = false end)
+                pcall(function() part.Velocity = Vector3.new() end)
+            end
+        end
+    end
+end
+
+-- Enable complete freeze
+local function EnableCompleteFreeze()
+    if not rollbackEnabled then
+        queuedRemoteCalls = {}
+        currentSnapshot = CreateSnapshot()
         
-        -- Freeze remote events
+        -- Block all network traffic
+        BlockAllNetwork()
         FreezeNetwork()
         
-        -- Slow down the game simulation
-        RunService:SetTimeScale(0.0001) -- Almost completely frozen
-        
-        -- Disable rendering (optional)
-        if pcall(function() RunService:Set3dRenderingEnabled(false) end) then
-            -- Executor supports this call
-        end
+        -- Freeze game state
+        FreezeGameState()
         
         rollbackEnabled = true
         return true
@@ -143,70 +218,112 @@ local function EnableRollback()
     return false
 end
 
--- Disable rollback and restore state
-local function DisableRollback()
-    if rollbackEnabled then
-        -- Restore physics and environment
+-- Restore game state
+local function RestoreGameState()
+    -- Restore physics
+    pcall(function()
         Physics.PhysicsEnvironmentalThrottle = originalSettings.PhysicsEnvironmentalThrottle
         Physics.AllowSleep = originalSettings.AllowSleep
         Workspace.Gravity = originalSettings.Gravity
         Workspace.GlobalWind = originalSettings.GlobalWind
-        
-        -- Restore time scale
         RunService:SetTimeScale(1)
-        
-        -- Re-enable rendering
-        if pcall(function() RunService:Set3dRenderingEnabled(true) end) then
-            -- Executor supports this call
-        end
-        
-        -- Restore network traffic
-        local mt = getrawmetatable(game)
+        RunService:Set3dRenderingEnabled(true)
+    end)
+    
+    -- Restore metatable
+    local mt = getrawmetatable(game)
+    if mt then
         setreadonly(mt, false)
-        mt.__namecall = nil
-        mt.__index = nil
+        mt.__namecall = oldNamecall
+        mt.__index = oldIndex
         setreadonly(mt, true)
-        
-        -- Restore character from snapshot
-        if LocalPlayer.Character and currentSnapshot then
-            local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-            if humanoid then
-                for k,v in pairs(currentSnapshot.characterState) do
-                    if humanoid[k] ~= nil then
-                        pcall(function() humanoid[k] = v end)
-                    end
-                end
+    end
+    
+    -- Restore character
+    if LocalPlayer.Character and currentSnapshot then
+        -- Restore humanoid state
+        local humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            for k, v in pairs(currentSnapshot.characterState) do
+                pcall(function() humanoid[k] = v end)
             end
-            
+            pcall(function() humanoid:ChangeState(currentSnapshot.characterState.state) end)
+        end
+        
+        -- Restore parts
+        for partName, partData in pairs(currentSnapshot.parts or {}) do
+            local part = LocalPlayer.Character:FindFirstChild(partName)
+            if part and part:IsA("BasePart") then
+                pcall(function() part.Anchored = partData.Anchored end)
+                pcall(function() part.CFrame = partData.CFrame end)
+                pcall(function() part.Size = partData.Size end)
+            end
+        end
+        
+        -- Restore position
+        pcall(function()
             if currentSnapshot.position then
-                pcall(function()
-                    LocalPlayer.Character:PivotTo(CFrame.new(currentSnapshot.position))
-                end)
+                LocalPlayer.Character:PivotTo(CFrame.new(currentSnapshot.position))
             end
-        end
-        
-        -- Restore camera
+        end)
+    end
+    
+    -- Restore camera
+    pcall(function()
         if currentSnapshot and currentSnapshot.camera and workspace.CurrentCamera then
-            pcall(function()
-                workspace.CurrentCamera.CFrame = currentSnapshot.camera.CFrame
-                workspace.CurrentCamera.FieldOfView = currentSnapshot.camera.FieldOfView
-            end)
+            workspace.CurrentCamera.CFrame = currentSnapshot.camera.CFrame
+            workspace.CurrentCamera.FieldOfView = currentSnapshot.camera.FieldOfView
+            workspace.CurrentCamera.CameraType = currentSnapshot.camera.CameraType
         end
-        
-        -- Process all queued remote calls
+    end)
+    
+    -- Restore player stats
+    for statName, statValue in pairs(currentSnapshot.playerStats or {}) do
+        local stat = LocalPlayer:FindFirstChild(statName)
+        if stat then
+            pcall(function() stat.Value = statValue end)
+        end
+    end
+end
+
+-- Disable freeze and restore state
+local function DisableCompleteFreeze()
+    if rollbackEnabled then
+        RestoreGameState()
         ProcessQueuedRemoteCalls()
-        
         rollbackEnabled = false
         return true
     end
     return false
 end
 
+-- Process queued remote calls
+local function ProcessQueuedRemoteCalls()
+    if #queuedRemoteCalls > 0 then
+        Rayfield:Notify({
+            Title = "Processing Actions",
+            Content = "Processing "..#queuedRemoteCalls.." queued actions",
+            Duration = 3,
+            Image = "rbxassetid://4483345998"
+        })
+        
+        for _, call in ipairs(queuedRemoteCalls) do
+            pcall(function()
+                if call.method == "InvokeServer" then
+                    call.remote:InvokeServer(unpack(call.args))
+                elseif call.method == "FireServer" then
+                    call.remote:FireServer(unpack(call.args))
+                end
+            end)
+        end
+        queuedRemoteCalls = {}
+    end
+end
+
 -- Hard rollback (rejoin)
 local function HardRollback()
-    -- Clear queued calls since we're rejoining
     queuedRemoteCalls = {}
-    DisableRollback()
+    DisableCompleteFreeze()
     task.wait(0.5)
     TPS:Teleport(game.PlaceId, LocalPlayer)
 end
@@ -216,57 +333,65 @@ local Window = Rayfield:CreateWindow({
     Name = "Rollback | PolleserHub",
     LoadingTitle = "Rollback | PolleserHub",
     LoadingSubtitle = "by Polleser",
-    ConfigurationSaving = { Enabled = false },
+    ConfigurationSaving = {Enabled = false}
 })
 
 local MainTab = Window:CreateTab("Rollback")
 
-local RollbackToggle = MainTab:CreateToggle({
-    Name = "Rollback (Toggle Before Rolling)",
+local FreezeToggle = MainTab:CreateToggle({
+    Name = "Rollback (Turn on before rolling)",
     CurrentValue = false,
-    Flag = "RollbackToggle",
+    Flag = "FreezeToggle",
     Callback = function(Value)
         if Value then
-            if EnableRollback() then
+            if EnableCompleteFreeze() then
                 Rayfield:Notify({
-                    Title = "Enabled Rollback",
-                    Content = "Enabled Rollback (it'll freeze the game)",
+                    Title = "Game Frozen",
+                    Content = "Game state is completely frozen - no changes will be saved",
                     Duration = 3,
                     Image = "rbxassetid://4483345998"
                 })
             end
         else
-            if DisableRollback() then
+            if DisableCompleteFreeze() then
                 Rayfield:Notify({
-                    Title = "State Disabled Rollback",
-                    Content = "Game is saving changes normally",
+                    Title = "Game Unfrozen",
+                    Content = "Game is now saving changes normally",
                     Duration = 3,
                     Image = "rbxassetid://4483345998"
                 })
             end
         end
-    end,
+    end
 })
 
 MainTab:CreateButton({
-    Name = "Press if result not good (Rejoin)",
+    Name = "Rejoin if result not good",
     Callback = function()
         Rayfield:Notify({
             Title = "Performing Rejoin",
-            Content = "Rejoining server...",
+            Content = "Rejoining server to ensure clean state...",
             Duration = 2,
             Image = "rbxassetid://4483345998"
         })
         HardRollback()
-    end,
+    end
 })
 
 MainTab:CreateKeybind({
-    Name = "Quick Toggle (Default: N)",
+    Name = "Quick Freeze Toggle (Default: N)",
     CurrentKeybind = "N",
     HoldToInteract = false,
-    Flag = "RollbackKeybind",
+    Flag = "FreezeKeybind",
     Callback = function()
-        RollbackToggle:Set(not RollbackToggle.CurrentValue)
-    end,
+        FreezeToggle:Set(not FreezeToggle.CurrentValue)
+    end
 })
+
+-- Prevent white screen by keeping rendering enabled
+RunService.RenderStepped:Connect(function()
+    if rollbackEnabled then
+        -- Keep rendering enabled but frozen
+        RunService:Set3dRenderingEnabled(true)
+    end
+end)
