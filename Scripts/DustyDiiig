@@ -1,0 +1,87 @@
+-- Load Rayfield Library (replace with your actual Rayfield source if needed)
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+-- Create Rayfield Window
+local Window = Rayfield:CreateWindow({
+    Name = "Dusty Diiig | PolleserHub",
+    LoadingTitle = "Dusty Diiig | PolleserHub",
+    LoadingSubtitle = "by Polleser",
+    ConfigurationSaving = {
+        Enabled = true
+    }
+})
+
+-- Create a Tab
+local Tab = Window:CreateTab("Main")
+local MainSection = Tab:CreateSection("OP")
+
+-- Remote and Coordinates Setup
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local remote = ReplicatedStorage:WaitForChild("Msg"):WaitForChild("\230\140\150\230\142\152")
+
+local cornerA = Vector3.new(-12, 5000, 276) -- Top-left corner
+local cornerB = Vector3.new(276, 5000, 0)   -- Bottom-right corner
+local middle = Vector3.new(132, 5000, 144)  -- Reference middle point
+
+local stepSize = 12        -- Grid step size
+local yDecrement = 12      -- Y decrease per layer
+local minY = -10000             -- Stop when Y reaches this (adjust as needed)
+local isRunning = false    -- Toggle state
+
+-- Function to fire remote for all blocks in the grid at a given Y level
+local function fireGridLayer(yLevel)
+    -- Iterate over X from -12 to 276 (24 steps)
+    for x = cornerA.X, cornerB.X, stepSize do
+        -- Iterate over Z from 0 to 276 (23 steps, increasing Z)
+        for z = cornerB.Z, cornerA.Z, stepSize do
+            if not isRunning then return false end -- Stop if toggle is off
+            local pos = Vector3.new(x, yLevel, z)
+            remote:FireServer(pos)
+            task.wait(0.01) -- Small delay to prevent server lag
+        end
+    end
+    return true -- Layer completed successfully
+end
+
+-- Main function to fire across all Y levels
+local function fireGridPattern()
+    local currentY = cornerA.Y
+    while currentY >= minY and isRunning do
+        local success = fireGridLayer(currentY)
+        if not success then break end -- Stop if interrupted
+        currentY = currentY - yDecrement
+    end
+    if isRunning then
+        isRunning = false -- Reset toggle state
+        Rayfield:Notify({
+            Title = "Completed",
+            Content = "Finished firing grid pattern!",
+            Duration = 5
+        })
+    end
+end
+
+-- Toggle to Enable/Disable Grid Digging
+Tab:CreateToggle({
+    Name = "Grid Dig",
+    Info = "Toggle to start/stop digging the entire grid, lowering Y by 12 each layer",
+    CurrentValue = false,
+    Callback = function(value)
+        isRunning = value
+        if value then
+            Rayfield:Notify({
+                Title = "Grid Dig Started",
+                Content = "Firing remote for entire grid, starting at Y=5000!",
+                Duration = 3
+            })
+            -- Start the pattern in a coroutine
+            coroutine.wrap(fireGridPattern)()
+        else
+            Rayfield:Notify({
+                Title = "Grid Dig Stopped",
+                Content = "Firing loop stopped.",
+                Duration = 3
+            })
+        end
+    end
+})
