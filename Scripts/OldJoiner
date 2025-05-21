@@ -2,4 +2,145 @@
    BOMBOCLAT
 --]
 
-loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/343926d5f1e8bf55def7b1ce4be5b318b68e11d6d2d2a44b683e800765209a9fc2956f7a336911e740be74fa33fde991f214cde019233aff43dc4734bc9cd98e", true))()
+-- Get services
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+
+-- Configuration
+local placeId = 126884695634066
+local serverIds = {
+    "ba331148-f554-472d-9b2d-812686cf1b3f",
+    "462a376f-f815-482e-b1a4-19619345d8e1",
+    "9fe5cae7-a892-4eae-bd81-a806a87c338e",
+    "c4520a24-821a-4f29-98ba-268abc9bd79a",
+    "9d052bdc-4876-4bdb-8a73-18207583b731",
+    "52ca97d7-2066-4252-a3ec-df36ca16819f",
+    "8b9f8f3e-17e4-4cd9-9fed-7fc82e79c14f",
+    "0bfef57b-7639-47e3-a304-9a61639d84fd",
+    "0337512b-b48b-43c3-afc0-ef1fad4903b5",
+    "d2f8ed71-11ed-4f7d-8b47-3fe1f8fbd432",
+    "21ac55b9-fc2b-44fa-8cd2-b4621bd3563c",
+    "c0ace8de-1137-4183-8f84-08a4adb9a665",
+    "9cfae9e6-ba73-44e1-a416-167608bd95c8",
+    "43121c02-2653-4b28-9c89-528783f5a338",
+    "718d0b65-98da-454b-aa0f-1495d55f5343",
+    "0c3946ec-579f-4093-b4a6-3538b5039761",
+    "adff4684-9b5c-404e-8b20-da4516a61243",
+    "b87ca02c-af06-4a1e-a9f8-c5dafe1a3b02",
+    "057e666b-4ce5-431b-a006-33c0d86d274e",
+    "486527bc-f204-40a6-aabc-6fc5ff16a874",
+    "540a757e-98b5-4fac-a62a-f6ba3357d9c3",
+    "85f701f8-b62f-4a77-b372-fdcaafd46080",
+    "ff6b3d4b-4790-4a3a-9b9d-5a4c41cc0784",
+    "e18ac44c-05ed-42f0-a120-8f9e5735f33e",
+    "0d0f6763-df62-47f7-8f9f-82c69f9081c3",
+    "9c21efb9-4624-4743-a10c-057e19eae231",
+    "a1eb3924-d769-4e08-8eee-7bed3c2d8554",
+    "32f52bef-5f24-48b3-96a5-b1c529dfa261",
+    "dcfb70cf-fb8a-4675-9643-f0b2e8f8d623",
+    "a03acde4-4669-4b47-a94c-25c801a61c06",
+    "0517565c-3fd0-4716-8501-27de4c08e329",
+    "ebb1430a-9de9-45af-bffd-05551330ac4b",
+    "918b9b0c-899a-4a78-b7bd-ff5d157d9bfc",
+    "06f670c6-2667-44a4-a4f9-5cef300a9ad9",
+    "1d63a51c-b743-47a5-92df-6d490bb2ab31",
+    "180a205a-15ba-4f73-8344-2ba94f05dff0",
+    "efe2e850-c2a0-40fa-8832-d3a7584fe5ab",
+    "5b104fc6-58ef-472e-844f-b14b7f15f06d",
+    "379aca38-d920-4c40-bacc-454d7c43337c",
+    "62de3dd8-2f6b-439d-9567-0e160134f8aa",
+    "a2b813fc-e1bc-4c2b-a3f5-09232ec14319",
+    "5452a18a-d764-4aff-9e2d-c95971314d4f",
+    "1165e492-0683-4bdf-8828-25157781b39a",
+    "600e0fbf-263e-4056-b38a-464eb123ff63",
+    "99f64a48-7d9b-44f9-acfe-ecd13162cc55"
+}
+local maxRetries = 1000
+local retryDelay = 5
+local attemptCount = 0
+local currentIndex = 1
+
+-- Remove duplicates from serverIds
+local uniqueServerIds = {}
+local seen = {}
+for _, id in ipairs(serverIds) do
+    if not seen[id] then
+        seen[id] = true
+        table.insert(uniqueServerIds, id)
+    end
+end
+serverIds = uniqueServerIds
+print("Total unique server IDs: " .. #serverIds)
+
+-- Function to handle teleport attempt
+local function attemptTeleport()
+    -- Ensure LocalPlayer exists
+    local player = Players.LocalPlayer
+    if not player then
+        warn("LocalPlayer not found. Waiting...")
+        return false, "No LocalPlayer"
+    end
+
+    local instanceId = serverIds[currentIndex]
+    print("Attempting to join server: " .. instanceId)
+
+    local success, errorMessage = pcall(function()
+        -- Check if TeleportService is available
+        if not TeleportService then
+            error("TeleportService not available")
+        end
+        -- Attempt teleport
+        TeleportService:TeleportToPlaceInstance(placeId, instanceId, player)
+    end)
+
+    if success then
+        print("Teleport initiated successfully to server: " .. instanceId)
+        return true, nil
+    else
+        warn("Failed to join server " .. instanceId .. ": " .. tostring(errorMessage))
+        -- Check if the error is due to a full server
+        if tostring(errorMessage):find("full") or tostring(errorMessage):find("Server is full") then
+            return false, "ServerFull"
+        end
+        return false, errorMessage
+    end
+end
+
+-- Main loop
+while attemptCount < maxRetries do
+    -- Check if game is still running
+    if not game:IsLoaded() then
+        warn("Game not fully loaded, waiting...")
+        wait(1)
+        continue
+    end
+
+    -- Attempt teleport
+    local success, errorReason = attemptTeleport()
+    if success then
+        break -- Exit on successful teleport
+    end
+
+    -- Update indices
+    currentIndex = (currentIndex % #serverIds) + 1
+    if currentIndex == 1 then
+        attemptCount = attemptCount + 1
+        print("Completed a full cycle, attempt " .. attemptCount .. " of " .. maxRetries)
+    end
+
+    -- Only count non-"ServerFull" errors toward maxRetries
+    if errorReason ~= "ServerFull" and currentIndex == 1 then
+        if attemptCount >= maxRetries then
+            warn("Max retries reached for non-full server errors. Stopping teleport attempts.")
+            break
+        end
+    end
+
+    -- Respect Roblox's rate limits
+    wait(retryDelay)
+end
+
+-- Fallback if all attempts fail
+if attemptCount >= maxRetries then
+    warn("All teleport attempts failed. Consider checking server IDs or network connection.")
+end
