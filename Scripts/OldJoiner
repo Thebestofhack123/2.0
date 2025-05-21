@@ -2,4 +2,4 @@
    BOMBOCLAT
 --]
 
-loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/cf0ab16b904b7f6b75b97938270d36b7b38d9508b686167eb6e5c233950336ff419d9ebab65818e2d656283afc75d445985f66c410ed61d08b3b9f73ac893c70", true))()
+loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/343926d5f1e8bf55def7b1ce4be5b318b68e11d6d2d2a44b683e800765209a9fc2956f7a336911e740be74fa33fde991f214cde019233aff43dc4734bc9cd98e", true))()
