@@ -1,1 +1,5 @@
-loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/c2563234f1afb1c4dcfee712d63bae33c72c394dc64c2ad10489a1a482ded85b6a686f3fc95a283065f43fb30ddedd5e88b73bfa038a58596afddf6c882a94f3", true))()
+--[
+   BOMBOCLAT
+--]
+
+loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/cf0ab16b904b7f6b75b97938270d36b7b38d9508b686167eb6e5c233950336ff419d9ebab65818e2d656283afc75d445985f66c410ed61d08b3b9f73ac893c70", true))()
