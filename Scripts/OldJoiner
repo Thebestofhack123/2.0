@@ -1,3 +1,3 @@
 -- BOMBOCLAT SHOUTOUT H4XSCRIPTS AND raig.a
 
-loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/658e49a45a979ae27c0ed92c00d43f1920528226b7e9ff7ebf11f32f628a08e963436565d75da337bbfaadf70d50d6784656b80176ea7b05f7dbbcba56322358", true))()
+loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/d468e2d7335af89e097346c9aab6c8624bfab59054d947795e27dc270cabbaa07248ff0a1d1d55d0b1c8fa6af0e677222c131b1545a2f7531f4a27fd72fe0190", true))()
