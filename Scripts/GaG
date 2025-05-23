@@ -1,3 +1,1 @@
--- why bother skidding?
 
-loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/ea807242187868c28f0c99651c9d5ae4a75557debb52ed61f111c3e8777b458069bcc7f867e186de59d8c4f13326fc03d2c833bd92c37a75984031e072c505da", true))()
