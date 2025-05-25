@@ -1,3 +1,3 @@
 -- why bother skidding?
 
-loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/8f4dd911c7cf62392610358e5aef33563670342a0608aea6577952d32da99198eaed737425a5c71ea2495caa356927020683c38d5bca24e9234de27a65a88d7a", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/Bombastic", true))()
