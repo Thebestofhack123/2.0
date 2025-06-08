@@ -1,1 +1,1105 @@
---[[ v1.0.0 https://wearedevs.net/obfuscator ]] return(function(...)local Q={"\043\078\098\061","\072\114\077\079\075\122\065\100\072\077\061\061";"\084\121\050\067\074\111\120\056";"\116\051\080\103\110\087\075\052\108\079\088\083\050\053\101\054";"\084\102\088\081\043\121\075\079","\050\111\068\055\090\109\052\079\090\087\065\112\075\078\079\078","\070\047\101\081\075\070\050\052\108\054\085\114\043\054\116\061","\088\054\085\081\084\054\088\067\106\098\050\079\108\054\088\057\108\054\088\055\106\069\061\061","\072\077\061\061","\084\111\088\117\074\088\075\086\050\070\077\047\088\085\075\083","\076\054\116\061","\084\109\050\065\088\057\079\089\090\070\050\119\109\055\103\070","\069\088\079\098\108\098\090\083\088\057\080\070\075\070\085\110";"\086\087\079\052\108\087\088\065\111\102\100\079\084\053\068\112";"\090\102\108\103\116\070\052\098\109\085\088\103\108\047\100\054\049\121\080\088";"";"\111\116\075\106\075\070\085\090\088\054\088\052\110\111\047\100\116\077\061\061";"\084\053\088\087\043\111\088\087\086\070\050\052\086\102\068\079";"\070\047\101\100\043\102\050\079\076\082\061\061","\043\054\101\052\075\051\090\087\084\102\079\118\075\083\061\061","\086\053\052\052\084\077\061\061";"\072\111\068\098\088\078\085\051\075\047\103\088\043\056\085\088\109\047\084\061","\121\070\073\050\102\073\119\111\098\077\077\049\081\081\084\043\090\085\077\048\056\085\083\055\119\090\109\048\065\067\057\047\106\107\047\056\117\113\106\074\088\075\078\114\067\097\088\052\069\052\119\072";"\075\102\068\073\043\121\106\061","\108\054\085\114\043\054\116\061","\108\054\101\099\108\051\103\100\043\102\084\061","\075\070\103\067\043\121\106\061";"\090\085\079\057\084\116\085\078\050\098\068\112\088\102\100\079\043\088\084\061","\086\056\079\087\075\069\061\061";"\084\054\090\052\043\054\083\061";"\075\053\047\052\108\054\090\065","\043\111\085\087\074\082\061\061","\043\054\088\118";"\074\102\090\080\069\111\100\087\086\079\085\048\043\116\050\089";"\084\102\085\118\075\054\101\081";"\074\085\088\053\086\069\061\061";"\075\053\085\081\075\069\061\061","\070\047\101\056\086\083\061\061","\108\054\101\118\108\111\047\114\075\070\106\061","\043\078\106\061";"\086\053\101\118\086\053\085\087","\110\051\050\087\084\098\108\079\108\082\061\061";"\088\070\090\053\111\070\108\099\090\079\075\087\116\111\079\120";"\070\047\101\048\075\111\112\061","\075\121\090\047\086\077\061\061","\108\111\120\083\086\111\090\115","\084\109\088\050"}for r,k in ipairs({{-470410+470411,-523109+523156},{-395013-(-395014);971917+-971884};{-689823+689857;723835-723788}})do while k[-733713-(-733714)]<k[424357-424355]do Q[k[636923+-636922]],Q[k[-191558-(-191560)]],k[388404-388403],k[-245174-(-245176)]=Q[k[893567+-893565]],Q[k[968133-968132]],k[978210+-978209]+(-783144-(-783145)),k[186291+-186289]-(-484096-(-484097))end end local function r(r)return Q[r+(2571-(-53725))]end do local r=math.floor local k={h=324950+-324892,w=-992340+992351;q=528807+-528776;["\056"]=132368-132329;["\050"]=220189-220172;S=237264+-237216,N=213178+-213175;g=500454-500445,["\054"]=995445+-995439,z=701265+-701263;a=1041020-1040958,["\053"]=1032149+-1032095;c=14515+-14464;U=183198-183193;["\043"]=-112919-(-112946),J=889810+-889784,G=-110643+110703;F=-24857+24880,e=-792768-(-792829),O=-799653-(-799690),["\055"]=41135+-41099;x=-334023-(-334080),["\052"]=-615392-(-615425),f=12607+-12569;T=-75841-(-75869);["\047"]=-747526-(-747579);d=-1008786+1008827,u=-179297-(-179312),["\048"]=947704+-947660,v=-570771+570817,W=-288662-(-288714);R=517273-517273,D=-698023+698072;L=-146399+146429;["\051"]=-821838-(-821845),Y=791346+-791336;m=-350444-(-350463),["\049"]=-696140+696152,r=-743910-(-743944);k=-763945-(-764004);n=861330+-861312;i=-939347+939410,E=645097+-645081,Q=243323-243278;b=-970678+970682,I=901420-901373;X=-172880-(-172901);l=426620+-426591;K=-297288+297313;y=-74747+74802,B=420295+-420253;M=386244+-386212,A=354988-354948;H=-818785-(-818799),Z=80490+-80477;["\057"]=394819-394784,o=-787833-(-787855);t=-912541+912561,p=-516220+516276,j=177986+-177978;V=-721199+721223,s=954663+-954620,C=-324551-(-324601),P=-489552-(-489553)}local w=string.sub local W=string.char local m=string.len local f=Q local g=table.insert local H=table.concat local n=type for Q=-151214-(-151215),#f,-788681+788682 do local M=f[Q]if n(M)=="\115\116\114\105\110\103"then local n=m(M)local x={}local G=966732+-966731 local b=-257873+257873 local D=28835+-28835 while G<=n do local Q=w(M,G,G)local m=k[Q]if m then b=b+m*(8251+-8187)^((132445+-132442)-D)D=D+(-992969-(-992970))if D==251338-251334 then D=568176+-568176 local Q=r(b/(-514371-(-579907)))local k=r((b%(-485988+551524))/(214794-214538))local w=b%(-418798-(-419054))g(x,W(Q,k,w))b=-194817+194817 end elseif Q=="\061"then g(x,W(r(b/(900171-834635))))if G>=n or w(M,G+(522080-522079),G+(64808-64807))~="\061"then g(x,W(r((b%(-523291-(-588827)))/(158147-157891))))end break end G=G+(596729+-596728)end f[Q]=H(x)end end end return(function(Q,w,W,m,f,g,H,G,V,N,b,O,n,k,t,Y,U,D,M,x,o)N,G,Y,b,V,n,D,x,O,k,M,o,t,U=function(Q,r)local w=b(r)local W=function(W,m,f)return k(Q,{W,m;f},r,w)end return W end,-298361-(-298361),function(Q,r)local w=b(r)local W=function()return k(Q,{},r,w)end return W end,function(Q)for r=-726260+726261,#Q,33937-33936 do M[Q[r]]=(18128-18127)+M[Q[r]]end if W then local k=W(true)local w=f(k)w[r(-894332+838041)],w[r(359125-415397)],w[r(160872+-217138)]=Q,D,function()return 3957055-(-122887)end return k else return m({},{[r(160807+-217079)]=D;[r(-490217+433926)]=Q;[r(40907-97173)]=function()return-796360+4876302 end})end end,function(Q,r)local w=b(r)local W=function(W,m)return k(Q,{W,m},r,w)end return W end,{},function(Q)local r,k=37074-37073,Q[-624098-(-624099)]while k do M[k],r=M[k]-(-448735-(-448736)),r+(649149+-649148)if M[k]==-645560-(-645560)then M[k],n[k]=nil,nil end k=Q[r]end end,function()G=G+(-1024419+1024420)M[G]=317604-317603 return G end,function(Q)M[Q]=M[Q]-(-109095-(-109096))if-984816-(-984816)==M[Q]then M[Q],n[Q]=nil,nil end end,function(k,W,m,f)local p,H,i,Z,s,U,E,d,T,j,L,X,a,P,J,R,y,S,l,z,b,c,u,h,A,D,I,B,M,e,K,q,C,G while k do if k<660884+8300813 then if k<5014670-653557 then if k<702536-(-817989)then if k<596502+597575 then if k<386454-(-302807)then if k<-779814+1378827 then if k<1017877+-652886 then p=575760+-575758 L=z[p]p=n[Z]P=L==p T=P k=503274+3935582 else G=O(G)G=nil j=nil E=nil C=nil l=O(l)a=nil h=nil j=r(808871+-865156)C={}h=r(921196+-977474)I=nil K=O(K)s=O(s)b=O(b)k=9807722-(-931685)i=O(i)U=O(U)U=Q[h]h=r(-408714-(-352428))b=nil K=r(-703904+647626)D=O(D)D=U[h]U=x()n[U]=D E=-808882+808883 h=Q[K]K=r(-99600+43325)D=h[K]K=Q[j]j=r(-287035+230777)s=x()h=K[j]i=549973+-549717 X=i l=r(-280460+224200)j=Q[l]l=r(645997-702286)K=j[l]j=715226+-715226 I=x()l=x()i=-1031394-(-1031395)n[l]=j j=-309272-(-309274)n[s]=j a={}d=i i=-1043775+1043775 j={}n[I]=C C=-233697+233697 y=d<i i=E-d end else q=r(222759-279019)c=Q[q]j=s q=r(672602-728883)e=c[q]c=e(M,j)e=n[m[-742516-(-742522)]]q=e()i=c+q E=i+h q=529023+-529022 k=-729484+9577441 i=524732+-524476 a=E%i h=a i=b[G]c=h+q e=D[c]j=nil E=i..e b[G]=E end else if k<598018-(-188384)then G=W[-878708-(-878710)]k=n[m[-564912+564913]]M=W[-55867-(-55868)]b=k k=b[G]k=k and 6630770-899541 or-772758+7455008 else G=-708162+708163 k={}b=n[m[251185-251176]]M=k D=b b=-712723+712724 k=-665414+4498520 U=b b=-55650-(-55650)h=U<b b=G-U end end else if k<1042623-(-328281)then if k<2193021-860641 then h=n[U]H=h k=1055674-(-322385)else M=r(309380-365663)b=240938-240938 k=Q[M]G=n[m[790519-790511]]M=k(G,b)k=1037695+-45908 end else if k<-1035835+2496234 then j=r(-599975-(-543690))K=r(-84308-(-28030))h=H H=Q[K]K=r(40995-97270)k=H[K]K=x()n[K]=k I=r(794011+-850296)H=Q[j]j=r(846941-903210)k=H[j]C=Q[I]s=k l=C j=k k=C and-971005+10812693 or-969632+2892357 else s=r(83877+-140141)l=Q[s]H=l k=7509490-542068 end end end else if k<-424646+4259114 then if k<647569+2597772 then if k<788141+1240620 then if k<1678496-(-227581)then X=r(-464581+408311)k=Q[X]X=r(421538-477800)Q[X]=k k=4415926-(-426290)else k=s k=l and-224681+7192103 or-1047869+2560665 H=l end else D=x()b=r(337836-394096)k=true G=x()U=x()M=W j=o(167612+11024488,{U})n[G]=k H=Q[b]b=r(610343-666622)k=H[b]b=x()n[b]=k k=N(-932460+8327317,{})n[D]=k k=false n[U]=k K=r(-670845+614565)h=Q[K]K=h(j)k=K and 396158+863712 or-400253+1778312 H=K end else if k<3618121-(-30440)then H={G}k=Q[r(-639179+582929)]else b=b+U K=not h G=b<=D G=K and G K=b>=D K=h and K G=K or G K=-77988+9424983 k=G and K G=913154+13665211 k=k or G end end else if k<4024070-(-144310)then if k<-270204+4107249 then p=-922148+922149 L=z[p]p=false P=L==p B=k T=P k=P and-286969+449716 or 4301100-(-137756)else G=n[m[-646296-(-646299)]]b=17803+-17771 C=194929-194916 M=G%b D=n[m[904139+-904135]]l=-352963-(-352965)K=n[m[270383+-270381]]E=n[m[-296713-(-296716)]]a=E-M E=1025893-1025861 I=a/E s=C-I j=l^s h=K/j l=251467-251211 U=D(h)D=-737728+4295705024 C=71106-70850 b=U%D U=669132-669130 D=U^M j=-471893+471894 G=b/D D=n[m[-984833+984837]]K=G%j j=4294242567-(-724729)h=K*j U=D(h)M=nil D=n[m[783205+-783201]]h=D(G)b=U+h U=-217818-(-283354)D=b%U K=-268686+334222 h=b-D U=h/K k=4817065-508336 K=-140704+140960 G=nil h=D%K j=D-h K=j/l b=nil D=nil l=-248161-(-248417)j=U%l s=U-j l=s/C s={h,K,j,l}l=nil n[m[-414294-(-414295)]]=s h=nil K=nil j=nil U=nil end else if k<-143390+4455076 then b=r(180666-236951)G=Q[b]b=r(331765-388023)M=G[b]k=Q[r(156344-212597)]b=n[m[855889-855888]]G={M(b)}H={w(G)}else G=n[m[1033540+-1033538]]b=n[m[915816-915813]]M=G==b k=16612628-226402 H=M end end end end else if k<6816262-(-116019)then if k<850220+4482110 then if k<432226+4290010 then if k<948375+3530824 then if k<5245476-816590 then k=Y(5359751-(-712871),{D})c={k()}k=Q[r(-357458+301201)]H={w(c)}else k=B k=446271+7898639 H=T end else k=-252697+12725222 end else if k<3903722-(-1012898)then k=-302664+12775189 else b=-298094+298095 G=n[m[-371688+371691]]M=G~=b k=M and 323873+3514004 or 11845351-132307 end end else if k<5890167-150339 then if k<4774945-(-657413)then U=-84009-(-84011)G=n[m[46859+-46858]]D=-281106-(-281107)b=G(D,U)G=-900374-(-900375)M=b==G k=M and-894253+17280479 or 4499245-144522 H=M else k=-756815+4098182 end else if k<-191954+6605192 then k=-697375+12771454 else K=260867+-260612 k={}n[m[968509-968507]]=k H=n[m[-268285-(-268288)]]U=35184372847220-758388 D=H H=G%U j=r(392629-448889)n[m[-788359+788363]]=H h=G%K s=291877+-291876 K=232399+-232397 U=h+K k=8986773-138816 n[m[-666421+666426]]=U K=Q[j]j=r(-363106+306829)h=K[j]K=h(M)C=s j=-532200+532201 h=r(-414002+357708)l=K b[G]=h h=-107511-(-107533)s=-486059+486059 I=C<s s=j-C end end end else if k<152465+8125494 then if k<934668+6509789 then if k<-896828+8025574 then if k<-38101+7049339 then C=914002-913937 q=r(-662210-(-605926))l=x()n[l]=H s=509481+-509478 k=n[K]H=k(s,C)s=x()n[s]=H k=310413-310413 C=k k=-563693-(-563693)I=k a=r(-905018+848738)E=V(195925+10066670,{})H=Q[a]a={H(E)}k={w(a)}a=k H=959614+-959612 k=a[H]E=k H=r(274049-330320)k=Q[H]i=n[b]c=Q[q]q=c(E)c=r(317538+-373799)e=i(q,c)i={e()}H=k(w(i))k=13868024-648367 i=x()n[i]=H e=n[s]c=e e=-153401-(-153402)q=e H=715164+-715163 e=612892-612892 X=q<e e=H-q else H=8351051-674036 b=5526994-(-618162)G=r(-977440+921188)M=G^b k=H-M H=r(-352816-(-296521))M=k k=H/M H={k}k=Q[r(-617245-(-560963))]end else H=r(516149+-572432)M=r(876149+-932404)k=Q[H]H=k(M)H={}k=Q[r(286655-342948)]end else if k<7769242-(-131973)then R=-553599-(-553600)n[G]=T p=n[A]L=p+R P=z[L]B=C+P P=-482129-(-482385)k=B%P C=k L=n[J]P=I+L k=805131+14130362 L=268567+-268311 B=P%L I=B else M=n[m[378121-378120]]H=#M M=-115992+115992 k=H==M k=k and 8283092-(-654996)or 3554853-(-753876)end end else if k<9283030-468014 then if k<8396591-(-43528)then k=15757464-821971 n[G]=H else X=690269-690269 k=-425062+9618531 i=#a E=i==X end else if k<-285277+9153084 then s=s+C j=s<=l a=not I j=a and j a=s>=l a=I and a j=a or j a=442170+202270 k=j and a j=15543178-(-257749)k=k or j else G=n[m[582218-582216]]b=-713062+713295 M=G*b G=774785+7836289170368 H=M+G M=-443398+35184372532230 k=H%M G=-649706+649707 n[m[-844370+844372]]=k M=n[m[-921879+921882]]H=M~=G k=12217709-504665 end end end end end else if k<11859000-(-702269)then if k<431016+10154493 then if k<-754490+10445301 then if k<856320+8645258 then if k<-84382+9492566 then if k<-673736+9882860 then X=#a i=-110317-(-110318)E=D(i,X)i=h(a,E)X=n[I]J=516386+-516385 E=nil k=9951506-455583 y=i-J d=K(y)X[i]=d i=nil else j=649938-649938 l=130943-130688 G=b k=n[m[-542667-(-542668)]]K=k(j,l)k=-510367+4343473 M[G]=K G=nil end else X=-64296-(-64296)i=#a E=i==X k=E and-741631+10243299 or-184294+9377763 end else if k<8637743-(-888346)then H={}E={}J={}h=nil P=nil d=x()K=nil i=x()n[i]=E E=x()C=nil y=r(-237609+181317)X=t(936465+7303847,{i;l;s,U})u=r(664546+-720837)n[E]=X X={}n[d]=X z=r(499533-555789)X=Q[y]j=nil Z=n[d]U=O(U)U=r(133050-189340)A={[u]=Z,[z]=P}D=nil K=r(996908+-1053181)y=X(J,A)X=o(-178601+888797,{d;i,I,l,s;E})d=O(d)i=O(i)G=y C=30044126989154-(-338756)s=O(s)s=r(-975897-(-919610))b=X a=nil l=O(l)I=O(I)D=Q[U]h=Q[K]l=b(s,C)E=O(E)j=G[l]l=r(593117+-649385)k=Q[r(-325311+269035)]l=h[l]K={l(h,j)}G=nil b=nil U=D(w(K))D=U()else X=-955077-(-955083)q=-678063-(-678064)k=n[K]c=k(q,X)k=r(773847-830117)X=r(-1013760+957490)Q[k]=c q=Q[X]X=333327+-333325 k=q>X k=k and-694904+13262647 or 609117+1105544 end end else if k<10363093-461198 then if k<302980+9543482 then a=r(601300-657585)k=-518460+2441185 I=Q[a]a=r(-296074+239810)C=I[a]l=C else k=14322319-299024 M=nil n[m[799484+-799479]]=H end else if k<10027192-(-134900)then E=i k=1002348+9737059 J=E a[E]=J E=nil else H=327019+14654493 b=6583694-932297 G=r(-5884+-50379)M=G^b k=H-M M=k H=r(-44693+-11581)k=H/M H={k}k=Q[r(-803346-(-747087))]end end end else if k<-897133+12967076 then if k<11753691-87546 then if k<10247108-(-917589)then if k<11601581-495506 then J=not y i=i+d E=i<=X E=J and E J=i>=X J=y and J E=J or E J=-98977+10168675 k=E and J E=-273919+9078912 k=k or E else k=14477104-307361 c=C==I e=c end else k=true H={}n[m[-790857-(-790858)]]=k k=Q[r(614354+-670642)]end else if k<11818660-(-161616)then G=n[m[976726+-976723]]b=-955375+955502 M=G*b G=-415829-(-416086)k=4283220-(-649415)H=M%G n[m[303915-303912]]=H else B=n[G]k=B and 14990207-(-216038)or 7771487-266119 T=B end end else if k<12693867-510722 then if k<12597538-455246 then k=true k=k and 14447037-829362 or-799576+17277554 else k=true k=5458335-1032447 end else if k<13342976-791287 then k=true k=k and 657619+8887735 or 13743818-596996 else T=n[G]H=T k=T and-878915+4714390 or 7310127-(-1034783)end end end end else if k<14438077-(-144375)then if k<13036962-(-719986)then if k<170472+13154110 then if k<375703+12811118 then if k<801476+11913098 then q=r(-6514-49770)d=r(502847+-559109)k=Q[q]X=Q[d]q=k(X)k=r(236725+-292995)Q[k]=q k=39626+4802590 else H={}k=Q[r(909423-965672)]end else d=not X e=e+q H=e<=c H=d and H d=e>=c d=X and d H=d or H d=-861458+15452302 k=H and d H=-121559+16447369 k=k or H end else if k<12785048-(-635087)then k=true k=k and 4274566-(-447520)or 818049+3607839 else M=r(-659316-(-603054))H=r(164466+-220736)k=Q[H]H=Q[M]M=r(-432818+376556)Q[M]=k M=r(885299+-941569)k=12880370-806291 Q[M]=H M=n[m[987220+-987219]]G=M()end end else if k<14574575-405128 then if k<742953+13167198 then H=r(-263099+206828)k=Q[H]M=n[m[868660+-868656]]j=r(-474674-(-418394))D=r(-484931-(-428647))b=Q[D]l=V(7275074-210791,{})K=Q[j]j={K(l)}K=-1046300+1046302 h={w(j)}U=h[K]D=b(U)b=r(491830+-548091)G=M(D,b)M={G()}H=k(w(M))G=n[m[-321893+321898]]k=G and 16612463-871749 or 10671193-806563 M=H H=G else k=n[m[-453012-(-453019)]]k=k and 81282+1277425 or 28509-(-963278)end else if k<389790+14093218 then n[G]=e k=n[G]k=k and 15574998-46547 or 814898+11337410 else k=n[m[-500792-(-500802)]]G=n[m[856109+-856098]]M[k]=G k=n[m[-203118+203130]]G={k(M)}k=Q[r(-902527+846260)]H={w(G)}end end end else if k<14811075-(-961949)then if k<414175+15011765 then if k<16234437-1035347 then if k<-804183+15655863 then d=x()n[d]=e A=-470124-(-470379)y=r(-1038169-(-981891))J=-33999-(-34099)H=Q[y]y=r(-798256+741981)R=318651-318651 P=r(930187-986471)Z=-35210+35211 k=H[y]y=261929+-261928 S=233482+-223482 z=-735611-(-735613)H=k(y,J)y=x()J=685083+-685083 n[y]=H k=n[K]H=k(J,A)A=581155-581154 J=x()n[J]=H k=n[K]u=n[y]H=k(A,u)A=x()n[A]=H H=n[K]u=H(Z,z)H=1033313-1033312 k=u==H u=x()n[u]=k H=r(555379-611640)B=Q[P]L=n[K]z=r(416638+-472892)p={L(R,S)}P=B(w(p))k=r(-101518+45253)B=r(-357091+300837)T=P..B Z=z..T k=E[k]k=k(E,H,Z)Z=x()n[Z]=k z=r(1024540+-1080820)H=Q[z]T=Y(997499+4349731,{K,d;s,b,G,i;u;Z;y;A;J;l})z={H(T)}k={w(z)}z=k k=n[u]k=k and 360772+12196950 or 550501+11502211 else Z=O(Z)J=O(J)z=nil d=O(d)k=26771+13192886 y=O(y)u=O(u)A=O(A)end else P=629370-629369 k=7327165-(-178203)B=z[P]T=B end else if k<954617+14581426 then k=-818831+1411612 else b=n[m[-375074+375080]]G=b==M k=733986+9130644 H=G end end else if k<791681+15573449 then if k<15988176-57251 then k=4200681-859314 D=nil K=nil h=nil else c=n[G]e=c k=c and-825101+11985621 or 14579165-409422 end else if k<16920197-532140 then k=H and-219141+14037257 or 14228110-204815 else H={}k=Q[r(-656883+600632)]end end end end end end end k=#f return w(H)end,{},function(Q,r)local w=b(r)local W=function(W,m,f,g,H)return k(Q,{W,m;f;g;H},r,w)end return W end,function(Q,r)local w=b(r)local W=function(W)return k(Q,{W},r,w)end return W end,function(Q,r)local w=b(r)local W=function(...)return k(Q,{...},r,w)end return W end return(U(-437895+3360192,{}))(w(H))end)(getfenv and getfenv()or _ENV,unpack or table[r(-435680-(-379416))],newproxy,setmetatable,getmetatable,select,{...})end)(...)
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+-- why bother skidding?
+
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local CollectionService = game:GetService("CollectionService")
+local TeleportService = game:GetService("TeleportService")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local HttpService = game:GetService("HttpService")
+
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+-- Store ESP state in _G for persistence
+_G.GrowAGardenESP = _G.GrowAGardenESP or {
+    Enabled = true,
+    WebhookUrl = "",
+    LastNotified = {},
+    Position = UDim2.new(0.5, -110, 0.5, -80)
+}
+
+-- List of rare or higher-tier pets
+local RARE_PETS = {
+    "Dragonfly", "Disco Bee", "Raccoon", "Bear Bee", "Mole", "Cow", "Sea Otter", "Silver Monkey", "Moon Cat",
+    "Praying Mantis", "Giant Ant", "Caterpillar", "Night Owl", "Polar Bear", "Red Fox", "Red Giant Ant", "Squirrel",
+    "Butterfly", "Anti Bee", "Queen Bee", "Petal Bee", "Honey Bee", "Bee", "Chicken Zombie"
+}
+
+-- Executor-friendly webhook sender
+local function sendWebhook(data)
+    if not data or type(data) ~= "table" then
+        warn("Invalid webhook data: Expected a table")
+        return false
+    end
+
+    local json
+    local success, result = pcall(function()
+        return HttpService:JSONEncode(data)
+    end)
+    if not success then
+        warn("Failed to encode JSON: " .. tostring(result))
+        return false
+    end
+    json = result
+
+    local request = (syn and syn.request) or (http and http.request) or (http_request) or (request)
+    if not request then
+        warn("No HTTP request function available")
+        return false
+    end
+
+    success, result = pcall(request, {
+        Url = _G.GrowAGardenESP.WebhookUrl,
+        Method = "POST",
+        Headers = {["Content-Type"] = "application/json"},
+        Body = json
+    })
+
+    if not success then
+        warn("Failed to send webhook: " .. tostring(result))
+        return false
+    end
+
+    if result and result.StatusCode and result.StatusCode >= 200 and result.StatusCode < 300 then
+        print("Webhook sent successfully!")
+        return true
+    else
+        warn("Webhook failed with status " .. tostring(result.StatusCode) .. ": " .. tostring(result.Body or "No body"))
+        return false
+    end
+end
+
+-- Function to check if a pet is rare
+local function isRarePet(petName)
+    for _, rarePet in ipairs(RARE_PETS) do
+        if petName == rarePet then
+            return true
+        end
+    end
+    return false
+end
+
+-- Function to notify about a rare pet via webhook
+local function notifyRarePet(petName, eggName)
+    if _G.GrowAGardenESP.WebhookUrl == "" then return end
+    if _G.GrowAGardenESP.LastNotified[petName] and os.time() - _G.GrowAGardenESP.LastNotified[petName] < 300 then return end
+    
+    local embed = {
+        {
+            title = "🎉 Rare Pet Appeared! 🎉",
+            description = string.format("You hatched a **%s** from a **%s** egg!", petName, eggName),
+            color = 0x00FF00,
+            fields = {
+                {
+                    name = "Game",
+                    value = string.format("[%s](https://www.roblox.com/games/%d)", game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name, game.PlaceId),
+                    inline = true
+                },
+                {
+                    name = "Player",
+                    value = LocalPlayer.Name,
+                    inline = true
+                },
+                {
+                    name = "Server",
+                    value = game.JobId,
+                    inline = true
+                }
+            },
+            timestamp = DateTime.now():ToIsoDate(),
+            footer = {
+                text = "Pet Notifier by Polleser"
+            }
+        }
+    }
+    
+    local success = sendWebhook({
+        embeds = embed,
+        username = "Polleser Hub",
+        avatar_url = "https://cdn.discordapp.com/attachments/1320056693069185105/1381307158620012614/image-11.png?ex=68470a0a&is=6845b88a&hm=5f0eeafd527427bafd57bc2c8a0a45014e90a78afee8a086ae73430d0e1ea09b&"
+    })
+    
+    if success then
+        _G.GrowAGardenESP.LastNotified[petName] = os.time()
+    end
+end
+
+-- Function to check if GUI already exists to prevent duplicates
+local function checkExistingGui()
+    return PlayerGui:FindFirstChild("GrowAGardenESP")
+end
+
+-- Function to create and initialize the GUI
+local function createGui()
+    -- Prevent duplicate GUIs
+    if checkExistingGui() then
+        checkExistingGui():Destroy()
+    end
+
+    -- Create a ScreenGui for the UI
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "GrowAGardenESP"
+    screenGui.Parent = PlayerGui
+    screenGui.ResetOnSpawn = false
+
+    -- Create the main frame with rounded corners
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Size = UDim2.new(0, 250, 0, 250) -- Increased height for webhook input
+    mainFrame.Position = _G.GrowAGardenESP.Position
+    mainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+    mainFrame.BackgroundTransparency = 0.2
+    mainFrame.BorderSizePixel = 0
+    mainFrame.Parent = screenGui
+
+    -- Add rounded corners
+    local uiCorner = Instance.new("UICorner")
+    uiCorner.CornerRadius = UDim.new(0, 12)
+    uiCorner.Parent = mainFrame
+
+    -- Add colorful gradient
+    local gradient = Instance.new("UIGradient")
+    gradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(80, 40, 150)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 80, 180))
+    })
+    gradient.Rotation = 45
+    gradient.Parent = mainFrame
+
+    -- Add animated stroke
+    local uiStroke = Instance.new("UIStroke")
+    uiStroke.Color = Color3.fromRGB(100, 100, 255)
+    uiStroke.Thickness = 2
+    uiStroke.Transparency = 0.5
+    uiStroke.Parent = mainFrame
+
+    -- Animate the stroke
+    local strokeTween = TweenService:Create(uiStroke, TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {
+        Transparency = 0.8
+    })
+    strokeTween:Play()
+
+    -- Title with glowing effect
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, -20, 0, 40)
+    title.Position = UDim2.new(0, 10, 0, 10)
+    title.BackgroundTransparency = 1
+    title.Text = "Pet Esp | PolleserHub"
+    title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    title.TextScaled = true
+    title.Font = Enum.Font.GothamBold
+    title.TextSize = 20
+    title.TextStrokeTransparency = 0.7
+    title.TextStrokeColor3 = Color3.fromRGB(150, 100, 255)
+    title.Parent = mainFrame
+
+    -- ESP Toggle Button
+    local espButton = Instance.new("TextButton")
+    espButton.Size = UDim2.new(0.9, 0, 0, 40)
+    espButton.Position = UDim2.new(0.05, 0, 0, 60)
+    espButton.BackgroundColor3 = _G.GrowAGardenESP.Enabled and Color3.fromRGB(80, 180, 80) or Color3.fromRGB(180, 80, 80)
+    espButton.Text = _G.GrowAGardenESP.Enabled and "ESP: ON" or "ESP: OFF"
+    espButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    espButton.TextScaled = true
+    espButton.Font = Enum.Font.GothamBold
+    espButton.TextSize = 14
+    espButton.AutoButtonColor = false
+    espButton.Parent = mainFrame
+
+    -- Add rounded corners to ESP button
+    local espButtonCorner = Instance.new("UICorner")
+    espButtonCorner.CornerRadius = UDim.new(0, 8)
+    espButtonCorner.Parent = espButton
+
+    -- Add hover effect to ESP button
+    espButton.MouseEnter:Connect(function()
+        local tween = TweenService:Create(espButton, TweenInfo.new(0.2), {
+            BackgroundTransparency = 0.2,
+            Size = UDim2.new(0.92, 0, 0, 42)
+        })
+        tween:Play()
+    end)
+
+    espButton.MouseLeave:Connect(function()
+        local tween = TweenService:Create(espButton, TweenInfo.new(0.2), {
+            BackgroundTransparency = 0,
+            Size = UDim2.new(0.9, 0, 0, 40)
+        })
+        tween:Play()
+    end)
+
+    -- Webhook Input Frame
+    local webhookFrame = Instance.new("Frame")
+    webhookFrame.Size = UDim2.new(0.9, 0, 0, 40)
+    webhookFrame.Position = UDim2.new(0.05, 0, 0, 110)
+    webhookFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
+    webhookFrame.Parent = mainFrame
+
+    local webhookCorner = Instance.new("UICorner")
+    webhookCorner.CornerRadius = UDim.new(0, 8)
+    webhookCorner.Parent = webhookFrame
+
+    local webhookTextBox = Instance.new("TextBox")
+    webhookTextBox.Size = UDim2.new(1, -10, 1, -10)
+    webhookTextBox.Position = UDim2.new(0, 5, 0, 5)
+    webhookTextBox.BackgroundTransparency = 1
+    webhookTextBox.Text = _G.GrowAGardenESP.WebhookUrl
+    webhookTextBox.PlaceholderText = "Discord Webhook URL"
+    webhookTextBox.TextColor3 = Color3.fromRGB(200, 200, 255)
+    webhookTextBox.TextScaled = true
+    webhookTextBox.Font = Enum.Font.Gotham
+    webhookTextBox.TextSize = 14
+    webhookTextBox.ClearTextOnFocus = false
+    webhookTextBox.Parent = webhookFrame
+
+    -- Save Webhook Button
+    local saveWebhookButton = Instance.new("TextButton")
+    saveWebhookButton.Size = UDim2.new(0.9, 0, 0, 30)
+    saveWebhookButton.Position = UDim2.new(0.05, 0, 0, 160)
+    saveWebhookButton.BackgroundColor3 = Color3.fromRGB(80, 80, 180)
+    saveWebhookButton.Text = "Save Webhook"
+    saveWebhookButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    saveWebhookButton.TextScaled = true
+    saveWebhookButton.Font = Enum.Font.GothamBold
+    saveWebhookButton.TextSize = 14
+    saveWebhookButton.AutoButtonColor = false
+    saveWebhookButton.Parent = mainFrame
+
+    local saveButtonCorner = Instance.new("UICorner")
+    saveButtonCorner.CornerRadius = UDim.new(0, 8)
+    saveButtonCorner.Parent = saveWebhookButton
+
+    saveWebhookButton.MouseEnter:Connect(function()
+        local tween = TweenService:Create(saveWebhookButton, TweenInfo.new(0.2), {
+            BackgroundColor3 = Color3.fromRGB(100, 100, 200),
+            Size = UDim2.new(0.92, 0, 0, 32)
+        })
+        tween:Play()
+    end)
+
+    saveWebhookButton.MouseLeave:Connect(function()
+        local tween = TweenService:Create(saveWebhookButton, TweenInfo.new(0.2), {
+            BackgroundColor3 = Color3.fromRGB(80, 80, 180),
+            Size = UDim2.new(0.9, 0, 0, 30)
+        })
+        tween:Play()
+    end)
+
+    saveWebhookButton.MouseButton1Click:Connect(function()
+        _G.GrowAGardenESP.WebhookUrl = webhookTextBox.Text
+        saveWebhookButton.Text = "Saved!"
+        task.wait(1.5)
+        saveWebhookButton.Text = "Save Webhook"
+    end)
+
+    -- Rejoin Server Button with actual teleport functionality
+    local rejoinButton = Instance.new("TextButton")
+    rejoinButton.Size = UDim2.new(0.9, 0, 0, 40)
+    rejoinButton.Position = UDim2.new(0.05, 0, 0, 200)
+    rejoinButton.BackgroundColor3 = Color3.fromRGB(100, 100, 255)
+    rejoinButton.Text = "Rejoin Server"
+    rejoinButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    rejoinButton.TextScaled = true
+    rejoinButton.Font = Enum.Font.GothamBold
+    rejoinButton.TextSize = 14
+    rejoinButton.AutoButtonColor = false
+    rejoinButton.Parent = mainFrame
+
+    -- Add rounded corners to Rejoin button
+    local rejoinButtonCorner = Instance.new("UICorner")
+    rejoinButtonCorner.CornerRadius = UDim.new(0, 8)
+    rejoinButtonCorner.Parent = rejoinButton
+
+    -- Add hover effect to Rejoin button
+    rejoinButton.MouseEnter:Connect(function()
+        local tween = TweenService:Create(rejoinButton, TweenInfo.new(0.2), {
+            BackgroundColor3 = Color3.fromRGB(120, 120, 255),
+            Size = UDim2.new(0.92, 0, 0, 42)
+        })
+        tween:Play()
+    end)
+
+    rejoinButton.MouseLeave:Connect(function()
+        local tween = TweenService:Create(rejoinButton, TweenInfo.new(0.2), {
+            BackgroundColor3 = Color3.fromRGB(100, 100, 255),
+            Size = UDim2.new(0.9, 0, 0, 40)
+        })
+        tween:Play()
+    end)
+
+    -- Working rejoin function
+    rejoinButton.MouseButton1Click:Connect(function()
+        -- Save current position before teleporting
+        _G.GrowAGardenESP.Position = mainFrame.Position
+        
+        -- Create a loading effect
+        local originalText = rejoinButton.Text
+        rejoinButton.Text = "Rejoining..."
+        
+        -- Attempt to teleport to the same server
+        local success, errorMsg = pcall(function()
+            TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+        end)
+        
+        -- If teleport fails, show error and reset button
+        if not success then
+            rejoinButton.Text = "Error - Try Again"
+            task.wait(2)
+            rejoinButton.Text = originalText
+            warn("Failed to rejoin server:", errorMsg)
+        end
+    end)
+
+    -- Make the frame draggable
+    local dragging
+    local dragInput
+    local dragStart
+    local startPos
+
+    local function update(input)
+        local delta = input.Position - dragStart
+        local newPos = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        mainFrame.Position = newPos
+        _G.GrowAGardenESP.Position = newPos
+    end
+
+    mainFrame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = mainFrame.Position
+            
+            -- Bounce effect when clicked
+            local tween = TweenService:Create(mainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+                Size = UDim2.new(0, 245, 0, 245)
+            })
+            tween:Play()
+            tween.Completed:Wait()
+            TweenService:Create(mainFrame, TweenInfo.new(0.2, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {
+                Size = UDim2.new(0, 250, 0, 250)
+            }):Play()
+            
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+
+    mainFrame.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            update(input)
+        end
+    end)
+
+    -- ESP System
+    local espCache = {}
+    local espEnabled = _G.GrowAGardenESP.Enabled
+
+    -- Function to get the hatch function and upvalues
+    local function getHatchData()
+        local success, hatchFunction = pcall(function()
+            return getupvalue(getupvalue(getconnections(ReplicatedStorage.GameEvents.PetEggService.OnClientEvent)[1].Function, 1), 2)
+        end)
+        if success and hatchFunction then
+            return hatchFunction, getupvalue(hatchFunction, 1), getupvalue(hatchFunction, 2)
+        end
+        return nil, nil, nil
+    end
+
+    local hatchFunction, eggModels, eggPets = getHatchData()
+
+    -- Function to get the egg model from its object ID
+    local function getObjectFromId(objectId)
+        if not eggModels then return end
+        for eggModel in eggModels do
+            if eggModel:GetAttribute("OBJECT_UUID") ~= objectId then continue end
+            return eggModel
+        end
+    end
+
+    -- Function to create an ESP BillboardGui
+    local function CreateEspGui(object, text, isRare)
+        local billboard = Instance.new("BillboardGui")
+        billboard.Name = "PetEggESP"
+        billboard.Adornee = object:FindFirstChildWhichIsA("BasePart") or object.PrimaryPart or object
+        billboard.Size = UDim2.new(0, 150, 0, 30)
+        billboard.StudsOffset = Vector3.new(0, 2.5, 0)
+        billboard.AlwaysOnTop = true
+
+        local label = Instance.new("TextLabel")
+        label.Parent = billboard
+        label.Size = UDim2.new(1, 0, 1, 0)
+        label.BackgroundTransparency = 1
+        label.Text = text
+        label.TextColor3 = isRare and Color3.new(0, 1, 1) or Color3.new(1, 1, 1)
+        label.TextStrokeTransparency = 0.5
+        label.TextStrokeColor3 = isRare and Color3.new(0, 0, 1) or Color3.new(0, 0, 0)
+        label.TextScaled = true
+        label.Font = Enum.Font.GothamBold
+        label.Parent = billboard
+
+        billboard.Parent = object
+        return billboard
+    end
+
+    -- Function to update ESP text and color
+    local function UpdateEsp(objectId, petName)
+        local object = getObjectFromId(objectId)
+        if not object or not espCache[objectId] then return end
+
+        local eggName = object:GetAttribute("EggName")
+        local labelGui = espCache[objectId]
+        if labelGui and labelGui:FindFirstChildOfClass("TextLabel") then
+            labelGui.TextLabel.Text = string.format("%s | %s", eggName, petName)
+            labelGui.TextLabel.TextColor3 = isRarePet(petName) and Color3.new(0, 1, 1) or Color3.new(1, 1, 1)
+            labelGui.TextLabel.TextStrokeColor3 = isRarePet(petName) and Color3.new(0, 0, 1) or Color3.new(0, 0, 0)
+            
+            -- Notify if rare pet
+            if isRarePet(petName) then
+                notifyRarePet(petName, eggName)
+            end
+        end
+    end
+
+    -- Function to add ESP to an egg
+    local function AddEsp(object)
+        if object:GetAttribute("OWNER") ~= LocalPlayer.Name then return end
+
+        local eggName = object:GetAttribute("EggName")
+        local petName = eggPets and eggPets[object:GetAttribute("OBJECT_UUID")] or "?"
+        local objectId = object:GetAttribute("OBJECT_UUID")
+        if not objectId then return end
+
+        local esp = CreateEspGui(object, string.format("%s | %s", eggName, petName), isRarePet(petName))
+        espCache[objectId] = esp
+    end
+
+    -- Function to remove ESP from an egg
+    local function RemoveEsp(object)
+        if object:GetAttribute("OWNER") ~= LocalPlayer.Name then return end
+
+        local objectId = object:GetAttribute("OBJECT_UUID")
+        if espCache[objectId] then
+            espCache[objectId]:Destroy()
+            espCache[objectId] = nil
+        end
+    end
+
+    -- ESP Toggle Logic
+    espButton.MouseButton1Click:Connect(function()
+        espEnabled = not espEnabled
+        _G.GrowAGardenESP.Enabled = espEnabled
+        
+        if espEnabled then
+            espButton.Text = "ESP: ON"
+            espButton.BackgroundColor3 = Color3.fromRGB(80, 180, 80)
+            for _, object in CollectionService:GetTagged("PetEggServer") do
+                task.spawn(AddEsp, object)
+            end
+            CollectionService:GetInstanceAddedSignal("PetEggServer"):Connect(AddEsp)
+            CollectionService:GetInstanceRemovedSignal("PetEggServer"):Connect(RemoveEsp)
+        else
+            espButton.Text = "ESP: OFF"
+            espButton.BackgroundColor3 = Color3.fromRGB(180, 80, 80)
+            for objectId, billboard in pairs(espCache) do
+                billboard:Destroy()
+                espCache[objectId] = nil
+            end
+        end
+    end)
+
+    -- Initialize ESP if enabled
+    if espEnabled and hatchFunction then
+        for _, object in CollectionService:GetTagged("PetEggServer") do
+            task.spawn(AddEsp, object)
+        end
+        CollectionService:GetInstanceAddedSignal("PetEggServer"):Connect(AddEsp)
+        CollectionService:GetInstanceRemovedSignal("PetEggServer"):Connect(RemoveEsp)
+    end
+
+    -- Hook the EggReadyToHatch event
+    if hatchFunction then
+        local old
+        old = hookfunction(getconnections(ReplicatedStorage.GameEvents.EggReadyToHatch_RE.OnClientEvent)[1].Function, newcclosure(function(objectId, petName)
+            if espEnabled then
+                UpdateEsp(objectId, petName)
+            end
+            return old(objectId, petName)
+        end))
+    end
+end
+
+-- Initial GUI creation
+createGui()
+
+-- Reconnect if player rejoins
+Players.PlayerAdded:Connect(function(player)
+    if player == LocalPlayer then
+        task.wait(3) -- Wait for everything to load
+        createGui()
+    end
+end)
