@@ -9,7 +9,7 @@ local UserInputService = game:GetService("UserInputService")
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
-while LocalPlayer:GetAttribute("Setup_Finish") ~= true do
+while LocalPlayer:GetAttribute("DataFullyLoaded") ~= true do
     task.wait()
 end
 
