@@ -219,17 +219,6 @@ local function createCustomNotification(petName)
     if #_G.GrowAGardenESP.NotificationLog > 10 then
         table.remove(_G.GrowAGardenESP.NotificationLog, 1)
     end
-    -- Disable auto-rejoin when a selected pet is found
-    if _G.GrowAGardenESP.AutoRejoinEnabled then
-        _G.GrowAGardenESP.AutoRejoinEnabled = false
-        autoRejoinToggle:Set(false)
-        Rayfield:Notify({ Title = "Auto-Rejoin Disabled", Content = string.format("Selected pet %s found. Auto-rejoin disabled.", petName), Duration = 5 })
-        table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = string.format("Auto-rejoin disabled due to %s", petName) })
-        if #_G.GrowAGardenESP.NotificationLog > 10 then
-            table.remove(_G.GrowAGardenESP.NotificationLog, 1)
-        end
-        saveConfig()
-    end
 end
 
 local Window = Rayfield:CreateWindow({
@@ -456,9 +445,12 @@ local function hasSelectedPetEgg()
     for _, billboard in pairs(espCache) do
         local label = billboard:FindFirstChildOfClass("TextLabel")
         if label then
-            local currentPetName = label.Text:match("| (.+)$"):gsub("%s+", "")
-            if _G.GrowAGardenESP.SelectedPets[currentPetName] then
-                return true
+            local currentPetName = label.Text:match("| (.+)$")
+            if currentPetName then
+                currentPetName = currentPetName:gsub("%s+", "")
+                if _G.GrowAGardenESP.SelectedPets[currentPetName] then
+                    return true
+                end
             end
         end
     end
@@ -509,8 +501,17 @@ local function RemoveEsp(object)
 end
 
 local function attemptRejoin()
-    while _G.GrowAGardenESP.AutoRejoinEnabled and task.wait(_G.GrowAGardenESP.AutoRejoinDelay) do
-        if not hasSelectedPetEgg() and _G.GrowAGardenESP.RejoinAttempts < _G.GrowAGardenESP.MaxRejoinAttempts then
+    while _G.GrowAGardenESP.AutoRejoinEnabled do
+        task.wait(_G.GrowAGardenESP.AutoRejoinDelay)
+        if hasSelectedPetEgg() then
+            Rayfield:Notify({ Title = "Auto-Rejoin Skipped", Content = "Selected pet found. Auto-rejoin attempt skipped.", Duration = 5 })
+            table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = "Auto-rejoin skipped due to selected pet found" })
+            if #_G.GrowAGardenESP.NotificationLog > 10 then
+                table.remove(_G.GrowAGardenESP.NotificationLog, 1)
+            end
+            continue -- Skip rejoin attempt but keep the loop running
+        end
+        if _G.GrowAGardenESP.RejoinAttempts < _G.GrowAGardenESP.MaxRejoinAttempts then
             local success, errorMsg = pcall(function()
                 TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
             end)
@@ -569,7 +570,7 @@ updateNotificationLog()
 
 task.spawn(function()
     while task.wait(1) do
-        if _G.GrowAGardenESP.AutoRejoinEnabled and not hasSelectedPetEgg() then
+        if _G.GrowAGardenESP.AutoRejoinEnabled then
             attemptRejoin()
         end
         updateNotificationLog()
