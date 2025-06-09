@@ -334,772 +334,522 @@
 -- why bother skidding?
 -- why bother skidding?
 -- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
--- why bother skidding?
 
-
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local CollectionService = game:GetService("CollectionService")
 local TeleportService = game:GetService("TeleportService")
-local RunService = game:GetService("RunService")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
-local HttpService = game:GetService("HttpService")
-
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
--- Store ESP state in _G for persistence
 _G.GrowAGardenESP = _G.GrowAGardenESP or {
     Enabled = true,
     WebhookUrl = "",
     LastNotified = {},
-    Position = UDim2.new(0.5, -110, 0.5, -80)
+    AutoRejoinEnabled = false,
+    AutoRejoinDelay = 5,
+    SelectedPets = {},
+    ConfigSaved = false,
+    NotificationLog = {},
+    RejoinAttempts = 0,
+    MaxRejoinAttempts = 3
 }
 
--- List of rare or higher-tier pets
+if not next(_G.GrowAGardenESP.SelectedPets) then
+    for _, pet in ipairs({
+        "Dragonfly", "Disco Bee", "Raccoon", "Bear Bee", "Mole", "Silver Monkey", "Moon Cat",
+        "Praying Mantis", "Giant Ant", "Caterpillar", "Night Owl", "Polar Bear", "Red Fox", "Squirrel",
+        "Butterfly", "Anti Bee", "Queen Bee", "Petal Bee", "Honey Bee", "Bee", "Chicken Zombie"
+    }) do
+        _G.GrowAGardenESP.SelectedPets[pet] = false
+    end
+end
+
 local RARE_PETS = {
-    "Dragonfly", "Disco Bee", "Raccoon", "Bear Bee", "Mole", "Cow", "Sea Otter", "Silver Monkey", "Moon Cat",
-    "Praying Mantis", "Giant Ant", "Caterpillar", "Night Owl", "Polar Bear", "Red Fox", "Red Giant Ant", "Squirrel",
+    "Dragonfly", "Disco Bee", "Raccoon", "Bear Bee", "Mole", "Silver Monkey", "Moon Cat",
+    "Praying Mantis", "Giant Ant", "Caterpillar", "Night Owl", "Polar Bear", "Red Fox", "Squirrel",
     "Butterfly", "Anti Bee", "Queen Bee", "Petal Bee", "Honey Bee", "Bee", "Chicken Zombie"
 }
 
--- Executor-friendly webhook sender
-local function sendWebhook(data)
-    if not data or type(data) ~= "table" then
-        warn("Invalid webhook data: Expected a table")
-        return false
+local function saveConfig()
+    local config = {
+        Enabled = _G.GrowAGardenESP.Enabled,
+        WebhookUrl = _G.GrowAGardenESP.WebhookUrl,
+        AutoRejoinEnabled = _G.GrowAGardenESP.AutoRejoinEnabled,
+        AutoRejoinDelay = _G.GrowAGardenESP.AutoRejoinDelay,
+        SelectedPets = _G.GrowAGardenESP.SelectedPets,
+        MaxRejoinAttempts = _G.GrowAGardenESP.MaxRejoinAttempts
+    }
+    local success, encoded = pcall(HttpService.JSONEncode, HttpService, config)
+    if success then
+        writefile("GrowAGardenESP_Config.json", encoded)
+        _G.GrowAGardenESP.ConfigSaved = true
     end
+end
 
+local function loadConfig()
+    if isfile("GrowAGardenESP_Config.json") then
+        local success, data = pcall(readfile, "GrowAGardenESP_Config.json")
+        if success then
+            Rayfield:Notify({ Title = "Loading Config", Content = "Configuration is being loaded...", Duration = 2 })
+            local decoded = HttpService:JSONDecode(data)
+            _G.GrowAGardenESP.Enabled = decoded.Enabled or true
+            _G.GrowAGardenESP.WebhookUrl = decoded.WebhookUrl or ""
+            _G.GrowAGardenESP.AutoRejoinEnabled = decoded.AutoRejoinEnabled or false
+            _G.GrowAGardenESP.AutoRejoinDelay = decoded.AutoRejoinDelay or 5
+            _G.GrowAGardenESP.MaxRejoinAttempts = decoded.MaxRejoinAttempts or 3
+            for pet, value in pairs(decoded.SelectedPets or {}) do
+                if _G.GrowAGardenESP.SelectedPets[pet] ~= nil then
+                    _G.GrowAGardenESP.SelectedPets[pet] = value
+                end
+            end
+            _G.GrowAGardenESP.ConfigSaved = true
+            Rayfield:Notify({ Title = "Config Loaded", Content = "Configuration loaded successfully!", Duration = 3 })
+        else
+            Rayfield:Notify({ Title = "Config Error", Content = "Failed to load configuration.", Duration = 3 })
+        end
+    end
+end
+
+loadConfig()
+
+local function validateWebhook(url)
+    if url == "" then return false end
+    local request = (syn and syn.request) or (http and http.request) or (http_request) or (request)
+    if not request then return false end
+    local success, result = pcall(request, {
+        Url = url,
+        Method = "GET"
+    })
+    return success and result and result.StatusCode >= 200 and result.StatusCode < 300
+end
+
+local function sendWebhook(data)
+    if not data or type(data) ~= "table" then return false end
     local json
     local success, result = pcall(function()
         return HttpService:JSONEncode(data)
     end)
-    if not success then
-        warn("Failed to encode JSON: " .. tostring(result))
-        return false
-    end
+    if not success then return false end
     json = result
-
     local request = (syn and syn.request) or (http and http.request) or (http_request) or (request)
-    if not request then
-        warn("No HTTP request function available")
-        return false
-    end
-
+    if not request then return false end
     success, result = pcall(request, {
         Url = _G.GrowAGardenESP.WebhookUrl,
         Method = "POST",
         Headers = {["Content-Type"] = "application/json"},
         Body = json
     })
+    return success and result and result.StatusCode >= 200 and result.StatusCode < 300
+end
 
-    if not success then
-        warn("Failed to send webhook: " .. tostring(result))
-        return false
-    end
-
-    if result and result.StatusCode and result.StatusCode >= 200 and result.StatusCode < 300 then
-        print("Webhook sent successfully!")
-        return true
+local function testWebhook()
+    local testData = {
+        embeds = {{
+            title = "Test Webhook",
+            description = "This is a test notification from PolleserHub!",
+            color = 0x00FF00,
+            timestamp = DateTime.now():ToIsoDate(),
+            footer = { text = "Pet Notifier by Polleser" }
+        }},
+        username = "Polleser Hub",
+        avatar_url = "https://cdn.discordapp.com/attachments/1320056693069185105/1381307158620012614/image-11.png?ex=68470a0a&is=6845b88a&hm=5f0eeafd527427bafd57bc2c8a0a45014e90a78afee8a086ae73430d0e1ea09b&"
+    }
+    if sendWebhook(testData) then
+        Rayfield:Notify({ Title = "Webhook Test", Content = "Test webhook sent successfully!", Duration = 3 })
+        table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = "Test webhook sent successfully" })
     else
-        warn("Webhook failed with status " .. tostring(result.StatusCode) .. ": " .. tostring(result.Body or "No body"))
-        return false
+        Rayfield:Notify({ Title = "Webhook Test Failed", Content = "Failed to send test webhook.", Duration = 3 })
+        table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = "Failed to send test webhook" })
     end
 end
 
--- Function to check if a pet is rare
 local function isRarePet(petName)
-    for _, rarePet in ipairs(RARE_PETS) do
-        if petName == rarePet then
-            return true
+    return table.find(RARE_PETS, petName) ~= nil
+end
+
+local function notifyRarePet(petName, eggName)
+    if _G.GrowAGardenESP.WebhookUrl == "" then return end
+    if _G.GrowAGardenESP.LastNotified[petName] and os.time() - _G.GrowAGardenESP.LastNotified[petName] < 300 then return end
+    local embed = {
+        {
+            title = "🎉 Good Pet Appeared! 🎉",
+            description = string.format("You hatched a **%s** from a **%s** egg!", petName, eggName),
+            color = 0x00FF00,
+            fields = {
+                { name = "Game", value = string.format("[%s](https://www.roblox.com/games/%d)", game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name, game.PlaceId), inline = true },
+                { name = "Player", value = LocalPlayer.Name, inline = true },
+                { name = "Server", value = game.JobId, inline = true }
+            },
+            timestamp = DateTime.now():ToIsoDate(),
+            footer = { text = "Pet Notifier by Polleser" }
+        }
+    }
+    if sendWebhook({ embeds = embed, username = "Polleser Hub", avatar_url = "https://cdn.discordapp.com/attachments/1320056693069185105/1381307158620012614/image-11.png?ex=68470a0a&is=6845b88a&hm=5f0eeafd527427bafd57bc2c8a0a45014e90a78afee8a086ae73430d0e1ea09b&" }) then
+        _G.GrowAGardenESP.LastNotified[petName] = os.time()
+        table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = string.format("Hatched %s from %s egg", petName, eggName) })
+        if #_G.GrowAGardenESP.NotificationLog > 10 then
+            table.remove(_G.GrowAGardenESP.NotificationLog, 1)
+        end
+    end
+end
+
+local function createCustomNotification(petName)
+    local notificationGui = Instance.new("ScreenGui")
+    notificationGui.Name = "PetNotification"
+    notificationGui.Parent = PlayerGui
+    notificationGui.ResetOnSpawn = false
+    local notificationFrame = Instance.new("Frame")
+    notificationFrame.Size = UDim2.new(0, 200, 0, 80)
+    notificationFrame.Position = UDim2.new(1, -210, 1, -90)
+    notificationFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+    notificationFrame.BackgroundTransparency = 0.2
+    notificationFrame.BorderSizePixel = 0
+    notificationFrame.Parent = notificationGui
+    local uiCorner = Instance.new("UICorner")
+    uiCorner.CornerRadius = UDim.new(0, 8)
+    uiCorner.Parent = notificationFrame
+    local gradient = Instance.new("UIGradient")
+    gradient.Color = ColorSequence.new({ ColorSequenceKeypoint.new(0, Color3.fromRGB(80, 40, 150)), ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 80, 180)) })
+    gradient.Rotation = 45
+    gradient.Parent = notificationFrame
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, -10, 0, 20)
+    title.Position = UDim2.new(0, 5, 0, 5)
+    title.BackgroundTransparency = 1
+    title.Text = "🎉 Selected Pet Appeared!"
+    title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    title.TextScaled = true
+    title.Font = Enum.Font.GothamBold
+    title.TextSize = 16
+    title.Parent = notificationFrame
+    local description = Instance.new("TextLabel")
+    description.Size = UDim2.new(1, -10, 0, 40)
+    description.Position = UDim2.new(0, 5, 0, 30)
+    description.BackgroundTransparency = 1
+    description.Text = string.format("You hatched a selected pet: %s", petName)
+    description.TextColor3 = Color3.fromRGB(200, 200, 255)
+    description.TextScaled = true
+    description.Font = Enum.Font.Gotham
+    description.TextSize = 14
+    description.TextWrapped = true
+    description.Parent = notificationFrame
+    notificationFrame.Position = UDim2.new(1, 0, 1, -90)
+    local tweenIn = TweenService:Create(notificationFrame, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Position = UDim2.new(1, -210, 1, -90) })
+    tweenIn:Play()
+    task.spawn(function()
+        task.wait(5)
+        local tweenOut = TweenService:Create(notificationFrame, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), { Position = UDim2.new(1, 0, 1, -90) })
+        tweenOut:Play()
+        tweenOut.Completed:Wait()
+        notificationGui:Destroy()
+    end)
+    table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = string.format("Selected pet %s hatched", petName) })
+    if #_G.GrowAGardenESP.NotificationLog > 10 then
+        table.remove(_G.GrowAGardenESP.NotificationLog, 1)
+    end
+end
+
+local Window = Rayfield:CreateWindow({
+    Name = "Pet Esp | PolleserHub",
+    LoadingTitle = "Grow A Garden ESP",
+    LoadingSubtitle = "by Polleser",
+    ConfigurationSaving = { Enabled = true, FolderName = "PolleserHub", FileName = "GrowAGardenESP" },
+    Discord = { Enabled = false },
+    KeySystem = false
+})
+
+local MainTab = Window:CreateTab("Main", "star")
+local espToggle = MainTab:CreateToggle({
+    Name = "ESP",
+    CurrentValue = _G.GrowAGardenESP.Enabled,
+    Callback = function(Value)
+        _G.GrowAGardenESP.Enabled = Value
+        saveConfig()
+    end
+})
+
+local webhookInput = MainTab:CreateInput({
+    Name = "Discord Webhook URL (for pet notifier)",
+    PlaceholderText = "Enter Webhook URL",
+    CurrentValue = _G.GrowAGardenESP.WebhookUrl,
+    Callback = function(Value)
+        _G.GrowAGardenESP.WebhookUrl = Value
+        task.spawn(function()
+            if validateWebhook(Value) then
+                Rayfield:Notify({ Title = "Webhook Valid", Content = "Webhook URL is valid!", Duration = 3 })
+            else
+                Rayfield:Notify({ Title = "Webhook Invalid", Content = "Please enter a valid webhook URL.", Duration = 3 })
+            end
+            saveConfig()
+        end)
+    end
+})
+
+local testWebhookButton = MainTab:CreateButton({
+    Name = "Test Webhook",
+    Callback = function()
+        testWebhook()
+    end
+})
+
+MainTab:CreateSection("Rejoin Stuff")
+MainTab:CreateLabel("It is a must to keep the rejoin delay at a good secs so you can turn it off")
+local autoRejoinToggle = MainTab:CreateToggle({
+    Name = "Auto-Rejoin",
+    CurrentValue = _G.GrowAGardenESP.AutoRejoinEnabled,
+    Callback = function(Value)
+        _G.GrowAGardenESP.AutoRejoinEnabled = Value
+        _G.GrowAGardenESP.RejoinAttempts = 0
+        saveConfig()
+    end
+})
+
+local autoRejoinSlider = MainTab:CreateSlider({
+    Name = "Auto-Rejoin Delay (Seconds)",
+    Range = {5, 30},
+    Increment = 5,
+    CurrentValue = _G.GrowAGardenESP.AutoRejoinDelay,
+    Callback = function(Value)
+        _G.GrowAGardenESP.AutoRejoinDelay = Value
+        saveConfig()
+    end
+})
+
+local rejoinButton = MainTab:CreateButton({
+    Name = "Rejoin Server",
+    Callback = function()
+        local success, errorMsg = pcall(function()
+            TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+        end)
+        if not success then
+            Rayfield:Notify({ Title = "Error", Content = "Failed to rejoin server: " .. errorMsg, Duration = 3 })
+            table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = "Failed to rejoin server: " .. errorMsg })
+            if #_G.GrowAGardenESP.NotificationLog > 10 then
+                table.remove(_G.GrowAGardenESP.NotificationLog, 1)
+            end
+            updateNotificationLog()
+        end
+    end
+})
+
+local PetTab = Window:CreateTab("Pet Selection", "paw-print")
+PetTab:CreateSection("Pet Stuff")
+local petDropdown = PetTab:CreateDropdown({
+    Name = "Select Pets",
+    Options = RARE_PETS,
+    CurrentOption = {},
+    MultipleOptions = true,
+    Callback = function(Selected)
+        task.delay(0.1, function()
+            for pet, _ in pairs(_G.GrowAGardenESP.SelectedPets) do
+                _G.GrowAGardenESP.SelectedPets[pet] = false
+            end
+            for _, pet in ipairs(Selected) do
+                _G.GrowAGardenESP.SelectedPets[pet] = true
+            end
+            saveConfig()
+        end)
+    end
+})
+
+local deselectAllButton = PetTab:CreateButton({
+    Name = "Deselect All Pets",
+    Callback = function()
+        for pet, _ in pairs(_G.GrowAGardenESP.SelectedPets) do
+            _G.GrowAGardenESP.SelectedPets[pet] = false
+        end
+        petDropdown:Set({})
+        saveConfig()
+    end
+})
+
+local NotificationTab = Window:CreateTab("Notification Log", "list")
+NotificationTab:CreateSection("Notifications")
+local notificationLogLabel = NotificationTab:CreateLabel("Recent Notifications")
+local clearLogButton = NotificationTab:CreateButton({
+    Name = "Clear Notification Log",
+    Callback = function()
+        _G.GrowAGardenESP.NotificationLog = {}
+        updateNotificationLog()
+    end
+})
+
+local function updateNotificationLog()
+    local logText = "Recent Notifications:\n"
+    for _, log in ipairs(_G.GrowAGardenESP.NotificationLog) do
+        local timeStr = os.date("%H:%M:%S", log.Time)
+        logText = logText .. string.format("[%s] %s\n", timeStr, log.Message)
+    end
+    notificationLogLabel:Set(logText)
+end
+
+local function syncDropdownWithSelectedPets()
+    local selected = {}
+    for pet, isSelected in pairs(_G.GrowAGardenESP.SelectedPets) do
+        if isSelected then
+            table.insert(selected, pet)
+        end
+    end
+    petDropdown:Set(selected)
+end
+syncDropdownWithSelectedPets()
+
+local espCache = {}
+local function getHatchData()
+    local success, hatchFunction = pcall(function()
+        return getupvalue(getupvalue(getconnections(ReplicatedStorage.GameEvents.PetEggService.OnClientEvent)[1].Function, 1), 2)
+    end)
+    if success and hatchFunction then
+        return hatchFunction, getupvalue(hatchFunction, 1), getupvalue(hatchFunction, 2)
+    end
+    return nil, nil, nil
+end
+
+local hatchFunction, eggModels, eggPets = getHatchData()
+
+local function getObjectFromId(objectId)
+    if not eggModels then return end
+    for eggModel in eggModels do
+        if eggModel:GetAttribute("OBJECT_UUID") ~= objectId then continue end
+        return eggModel
+    end
+end
+
+local function CreateEspGui(object, text, isRare)
+    local billboard = Instance.new("BillboardGui")
+    billboard.Name = "PetEggESP"
+    billboard.Adornee = object:FindFirstChildWhichIsA("BasePart") or object.PrimaryPart or object
+    billboard.Size = UDim2.new(0, 150, 0, 30)
+    billboard.StudsOffset = Vector3.new(0, 2.5, 0)
+    billboard.AlwaysOnTop = true
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(1, 0, 1, 0)
+    label.BackgroundTransparency = 1
+    label.Text = text
+    label.TextColor3 = isRare and Color3.new(0, 1, 1) or Color3.new(1, 1, 1)
+    label.TextStrokeTransparency = 0.5
+    label.TextStrokeColor3 = isRare and Color3.new(0, 0, 1) or Color3.new(0, 0, 0)
+    label.TextScaled = true
+    label.Font = Enum.Font.GothamBold
+    label.Parent = billboard
+    billboard.Parent = object
+    return billboard
+end
+
+local function hasSelectedPetEgg()
+    for _, billboard in pairs(espCache) do
+        local label = billboard:FindFirstChildOfClass("TextLabel")
+        if label then
+            local currentPetName = label.Text:match("| (.+)$"):gsub("%s+", "")
+            if _G.GrowAGardenESP.SelectedPets[currentPetName] then
+                return true
+            end
         end
     end
     return false
 end
 
--- Function to notify about a rare pet via webhook
-local function notifyRarePet(petName, eggName)
-    if _G.GrowAGardenESP.WebhookUrl == "" then return end
-    if _G.GrowAGardenESP.LastNotified[petName] and os.time() - _G.GrowAGardenESP.LastNotified[petName] < 300 then return end
-    
-    local embed = {
-        {
-            title = "🎉 Rare Pet Appeared! 🎉",
-            description = string.format("You hatched a **%s** from a **%s** egg!", petName, eggName),
-            color = 0x00FF00,
-            fields = {
-                {
-                    name = "Game",
-                    value = string.format("[%s](https://www.roblox.com/games/%d)", game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name, game.PlaceId),
-                    inline = true
-                },
-                {
-                    name = "Player",
-                    value = LocalPlayer.Name,
-                    inline = true
-                },
-                {
-                    name = "Server",
-                    value = game.JobId,
-                    inline = true
-                }
-            },
-            timestamp = DateTime.now():ToIsoDate(),
-            footer = {
-                text = "Pet Notifier by Polleser"
-            }
-        }
-    }
-    
-    local success = sendWebhook({
-        embeds = embed,
-        username = "Polleser Hub",
-        avatar_url = "https://cdn.discordapp.com/attachments/1320056693069185105/1381307158620012614/image-11.png?ex=68470a0a&is=6845b88a&hm=5f0eeafd527427bafd57bc2c8a0a45014e90a78afee8a086ae73430d0e1ea09b&"
-    })
-    
-    if success then
-        _G.GrowAGardenESP.LastNotified[petName] = os.time()
-    end
-end
-
--- Function to check if GUI already exists to prevent duplicates
-local function checkExistingGui()
-    return PlayerGui:FindFirstChild("GrowAGardenESP")
-end
-
--- Function to create and initialize the GUI
-local function createGui()
-    -- Prevent duplicate GUIs
-    if checkExistingGui() then
-        checkExistingGui():Destroy()
-    end
-
-    -- Create a ScreenGui for the UI
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "GrowAGardenESP"
-    screenGui.Parent = PlayerGui
-    screenGui.ResetOnSpawn = false
-
-    -- Create the main frame with rounded corners
-    local mainFrame = Instance.new("Frame")
-    mainFrame.Size = UDim2.new(0, 250, 0, 250) -- Increased height for webhook input
-    mainFrame.Position = _G.GrowAGardenESP.Position
-    mainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
-    mainFrame.BackgroundTransparency = 0.2
-    mainFrame.BorderSizePixel = 0
-    mainFrame.Parent = screenGui
-
-    -- Add rounded corners
-    local uiCorner = Instance.new("UICorner")
-    uiCorner.CornerRadius = UDim.new(0, 12)
-    uiCorner.Parent = mainFrame
-
-    -- Add colorful gradient
-    local gradient = Instance.new("UIGradient")
-    gradient.Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(80, 40, 150)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 80, 180))
-    })
-    gradient.Rotation = 45
-    gradient.Parent = mainFrame
-
-    -- Add animated stroke
-    local uiStroke = Instance.new("UIStroke")
-    uiStroke.Color = Color3.fromRGB(100, 100, 255)
-    uiStroke.Thickness = 2
-    uiStroke.Transparency = 0.5
-    uiStroke.Parent = mainFrame
-
-    -- Animate the stroke
-    local strokeTween = TweenService:Create(uiStroke, TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true), {
-        Transparency = 0.8
-    })
-    strokeTween:Play()
-
-    -- Title with glowing effect
-    local title = Instance.new("TextLabel")
-    title.Size = UDim2.new(1, -20, 0, 40)
-    title.Position = UDim2.new(0, 10, 0, 10)
-    title.BackgroundTransparency = 1
-    title.Text = "Pet Esp | PolleserHub"
-    title.TextColor3 = Color3.fromRGB(255, 255, 255)
-    title.TextScaled = true
-    title.Font = Enum.Font.GothamBold
-    title.TextSize = 20
-    title.TextStrokeTransparency = 0.7
-    title.TextStrokeColor3 = Color3.fromRGB(150, 100, 255)
-    title.Parent = mainFrame
-
-    -- ESP Toggle Button
-    local espButton = Instance.new("TextButton")
-    espButton.Size = UDim2.new(0.9, 0, 0, 40)
-    espButton.Position = UDim2.new(0.05, 0, 0, 60)
-    espButton.BackgroundColor3 = _G.GrowAGardenESP.Enabled and Color3.fromRGB(80, 180, 80) or Color3.fromRGB(180, 80, 80)
-    espButton.Text = _G.GrowAGardenESP.Enabled and "ESP: ON" or "ESP: OFF"
-    espButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    espButton.TextScaled = true
-    espButton.Font = Enum.Font.GothamBold
-    espButton.TextSize = 14
-    espButton.AutoButtonColor = false
-    espButton.Parent = mainFrame
-
-    -- Add rounded corners to ESP button
-    local espButtonCorner = Instance.new("UICorner")
-    espButtonCorner.CornerRadius = UDim.new(0, 8)
-    espButtonCorner.Parent = espButton
-
-    -- Add hover effect to ESP button
-    espButton.MouseEnter:Connect(function()
-        local tween = TweenService:Create(espButton, TweenInfo.new(0.2), {
-            BackgroundTransparency = 0.2,
-            Size = UDim2.new(0.92, 0, 0, 42)
-        })
-        tween:Play()
-    end)
-
-    espButton.MouseLeave:Connect(function()
-        local tween = TweenService:Create(espButton, TweenInfo.new(0.2), {
-            BackgroundTransparency = 0,
-            Size = UDim2.new(0.9, 0, 0, 40)
-        })
-        tween:Play()
-    end)
-
-    -- Webhook Input Frame
-    local webhookFrame = Instance.new("Frame")
-    webhookFrame.Size = UDim2.new(0.9, 0, 0, 40)
-    webhookFrame.Position = UDim2.new(0.05, 0, 0, 110)
-    webhookFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
-    webhookFrame.Parent = mainFrame
-
-    local webhookCorner = Instance.new("UICorner")
-    webhookCorner.CornerRadius = UDim.new(0, 8)
-    webhookCorner.Parent = webhookFrame
-
-    local webhookTextBox = Instance.new("TextBox")
-    webhookTextBox.Size = UDim2.new(1, -10, 1, -10)
-    webhookTextBox.Position = UDim2.new(0, 5, 0, 5)
-    webhookTextBox.BackgroundTransparency = 1
-    webhookTextBox.Text = _G.GrowAGardenESP.WebhookUrl
-    webhookTextBox.PlaceholderText = "Discord Webhook URL"
-    webhookTextBox.TextColor3 = Color3.fromRGB(200, 200, 255)
-    webhookTextBox.TextScaled = true
-    webhookTextBox.Font = Enum.Font.Gotham
-    webhookTextBox.TextSize = 14
-    webhookTextBox.ClearTextOnFocus = false
-    webhookTextBox.Parent = webhookFrame
-
-    -- Save Webhook Button
-    local saveWebhookButton = Instance.new("TextButton")
-    saveWebhookButton.Size = UDim2.new(0.9, 0, 0, 30)
-    saveWebhookButton.Position = UDim2.new(0.05, 0, 0, 160)
-    saveWebhookButton.BackgroundColor3 = Color3.fromRGB(80, 80, 180)
-    saveWebhookButton.Text = "Save Webhook"
-    saveWebhookButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    saveWebhookButton.TextScaled = true
-    saveWebhookButton.Font = Enum.Font.GothamBold
-    saveWebhookButton.TextSize = 14
-    saveWebhookButton.AutoButtonColor = false
-    saveWebhookButton.Parent = mainFrame
-
-    local saveButtonCorner = Instance.new("UICorner")
-    saveButtonCorner.CornerRadius = UDim.new(0, 8)
-    saveButtonCorner.Parent = saveWebhookButton
-
-    saveWebhookButton.MouseEnter:Connect(function()
-        local tween = TweenService:Create(saveWebhookButton, TweenInfo.new(0.2), {
-            BackgroundColor3 = Color3.fromRGB(100, 100, 200),
-            Size = UDim2.new(0.92, 0, 0, 32)
-        })
-        tween:Play()
-    end)
-
-    saveWebhookButton.MouseLeave:Connect(function()
-        local tween = TweenService:Create(saveWebhookButton, TweenInfo.new(0.2), {
-            BackgroundColor3 = Color3.fromRGB(80, 80, 180),
-            Size = UDim2.new(0.9, 0, 0, 30)
-        })
-        tween:Play()
-    end)
-
-    saveWebhookButton.MouseButton1Click:Connect(function()
-        _G.GrowAGardenESP.WebhookUrl = webhookTextBox.Text
-        saveWebhookButton.Text = "Saved!"
-        task.wait(1.5)
-        saveWebhookButton.Text = "Save Webhook"
-    end)
-
-    -- Rejoin Server Button with actual teleport functionality
-    local rejoinButton = Instance.new("TextButton")
-    rejoinButton.Size = UDim2.new(0.9, 0, 0, 40)
-    rejoinButton.Position = UDim2.new(0.05, 0, 0, 200)
-    rejoinButton.BackgroundColor3 = Color3.fromRGB(100, 100, 255)
-    rejoinButton.Text = "Rejoin Server"
-    rejoinButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    rejoinButton.TextScaled = true
-    rejoinButton.Font = Enum.Font.GothamBold
-    rejoinButton.TextSize = 14
-    rejoinButton.AutoButtonColor = false
-    rejoinButton.Parent = mainFrame
-
-    -- Add rounded corners to Rejoin button
-    local rejoinButtonCorner = Instance.new("UICorner")
-    rejoinButtonCorner.CornerRadius = UDim.new(0, 8)
-    rejoinButtonCorner.Parent = rejoinButton
-
-    -- Add hover effect to Rejoin button
-    rejoinButton.MouseEnter:Connect(function()
-        local tween = TweenService:Create(rejoinButton, TweenInfo.new(0.2), {
-            BackgroundColor3 = Color3.fromRGB(120, 120, 255),
-            Size = UDim2.new(0.92, 0, 0, 42)
-        })
-        tween:Play()
-    end)
-
-    rejoinButton.MouseLeave:Connect(function()
-        local tween = TweenService:Create(rejoinButton, TweenInfo.new(0.2), {
-            BackgroundColor3 = Color3.fromRGB(100, 100, 255),
-            Size = UDim2.new(0.9, 0, 0, 40)
-        })
-        tween:Play()
-    end)
-
-    -- Working rejoin function
-    rejoinButton.MouseButton1Click:Connect(function()
-        -- Save current position before teleporting
-        _G.GrowAGardenESP.Position = mainFrame.Position
-        
-        -- Create a loading effect
-        local originalText = rejoinButton.Text
-        rejoinButton.Text = "Rejoining..."
-        
-        -- Attempt to teleport to the same server
-        local success, errorMsg = pcall(function()
-            TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
-        end)
-        
-        -- If teleport fails, show error and reset button
-        if not success then
-            rejoinButton.Text = "Error - Try Again"
-            task.wait(2)
-            rejoinButton.Text = originalText
-            warn("Failed to rejoin server:", errorMsg)
-        end
-    end)
-
-    -- Make the frame draggable
-    local dragging
-    local dragInput
-    local dragStart
-    local startPos
-
-    local function update(input)
-        local delta = input.Position - dragStart
-        local newPos = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-        mainFrame.Position = newPos
-        _G.GrowAGardenESP.Position = newPos
-    end
-
-    mainFrame.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            dragging = true
-            dragStart = input.Position
-            startPos = mainFrame.Position
-            
-            -- Bounce effect when clicked
-            local tween = TweenService:Create(mainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-                Size = UDim2.new(0, 245, 0, 245)
-            })
-            tween:Play()
-            tween.Completed:Wait()
-            TweenService:Create(mainFrame, TweenInfo.new(0.2, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {
-                Size = UDim2.new(0, 250, 0, 250)
-            }):Play()
-            
-            input.Changed:Connect(function()
-                if input.UserInputState == Enum.UserInputState.End then
-                    dragging = false
+local rejoinTask = nil
+local pauseRejoin = false
+task.spawn(function()
+    while true do
+        if _G.GrowAGardenESP.AutoRejoinEnabled and not hasSelectedPetEgg() and not pauseRejoin and _G.GrowAGardenESP.RejoinAttempts < _G.GrowAGardenESP.MaxRejoinAttempts then
+            if rejoinTask then
+                rejoinTask:Cancel()
+            end
+            rejoinTask = task.spawn(function()
+                wait(_G.GrowAGardenESP.AutoRejoinDelay)
+                if _G.GrowAGardenESP.AutoRejoinEnabled and not hasSelectedPetEgg() and not pauseRejoin then
+                    local success, errorMsg = pcall(function()
+                        TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+                    end)
+                    if not success then
+                        _G.GrowAGardenESP.RejoinAttempts = _G.GrowAGardenESP.RejoinAttempts + 1
+                        Rayfield:Notify({ Title = "Error", Content = string.format("Failed to rejoin server: %s (Attempt %d/%d)", errorMsg, _G.GrowAGardenESP.RejoinAttempts, _G.GrowAGardenESP.MaxRejoinAttempts), Duration = 3 })
+                        table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = string.format("Failed to rejoin server: %s (Attempt %d/%d)", errorMsg, _G.GrowAGardenESP.RejoinAttempts, _G.GrowAGardenESP.MaxRejoinAttempts) })
+                        if #_G.GrowAGardenESP.NotificationLog > 10 then
+                            table.remove(_G.GrowAGardenESP.NotificationLog, 1)
+                        end
+                        updateNotificationLog()
+                        if _G.GrowAGardenESP.RejoinAttempts >= _G.GrowAGardenESP.MaxRejoinAttempts then
+                            _G.GrowAGardenESP.AutoRejoinEnabled = false
+                            autoRejoinToggle:Set(false)
+                            Rayfield:Notify({ Title = "Auto-Rejoin Disabled", Content = "Max rejoin attempts reached. Auto-rejoin disabled.", Duration = 5 })
+                        end
+                    else
+                        _G.GrowAGardenESP.RejoinAttempts = 0
+                    end
                 end
             end)
         end
-    end)
-
-    mainFrame.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-            dragInput = input
-        end
-    end)
-
-    UserInputService.InputChanged:Connect(function(input)
-        if input == dragInput and dragging then
-            update(input)
-        end
-    end)
-
-    -- ESP System
-    local espCache = {}
-    local espEnabled = _G.GrowAGardenESP.Enabled
-
-    -- Function to get the hatch function and upvalues
-    local function getHatchData()
-        local success, hatchFunction = pcall(function()
-            return getupvalue(getupvalue(getconnections(ReplicatedStorage.GameEvents.PetEggService.OnClientEvent)[1].Function, 1), 2)
-        end)
-        if success and hatchFunction then
-            return hatchFunction, getupvalue(hatchFunction, 1), getupvalue(hatchFunction, 2)
-        end
-        return nil, nil, nil
+        wait(0.5)
     end
+end)
 
-    local hatchFunction, eggModels, eggPets = getHatchData()
-
-    -- Function to get the egg model from its object ID
-    local function getObjectFromId(objectId)
-        if not eggModels then return end
-        for eggModel in eggModels do
-            if eggModel:GetAttribute("OBJECT_UUID") ~= objectId then continue end
-            return eggModel
+local function UpdateEsp(objectId, petName)
+    local object = getObjectFromId(objectId)
+    if not object or not espCache[objectId] then return end
+    local eggName = object:GetAttribute("EggName")
+    local labelGui = espCache[objectId]
+    if labelGui and labelGui:FindFirstChildOfClass("TextLabel") then
+        labelGui.TextLabel.Text = string.format("%s | %s", eggName, petName)
+        labelGui.TextLabel.TextColor3 = isRarePet(petName) and Color3.new(0, 1, 1) or Color3.new(1, 1, 1)
+        labelGui.TextLabel.TextStrokeColor3 = isRarePet(petName) and Color3.new(0, 0, 1) or Color3.new(0, 0, 0)
+        if isRarePet(petName) then
+            notifyRarePet(petName, eggName)
+            updateNotificationLog()
         end
-    end
-
-    -- Function to create an ESP BillboardGui
-    local function CreateEspGui(object, text, isRare)
-        local billboard = Instance.new("BillboardGui")
-        billboard.Name = "PetEggESP"
-        billboard.Adornee = object:FindFirstChildWhichIsA("BasePart") or object.PrimaryPart or object
-        billboard.Size = UDim2.new(0, 150, 0, 30)
-        billboard.StudsOffset = Vector3.new(0, 2.5, 0)
-        billboard.AlwaysOnTop = true
-
-        local label = Instance.new("TextLabel")
-        label.Parent = billboard
-        label.Size = UDim2.new(1, 0, 1, 0)
-        label.BackgroundTransparency = 1
-        label.Text = text
-        label.TextColor3 = isRare and Color3.new(0, 1, 1) or Color3.new(1, 1, 1)
-        label.TextStrokeTransparency = 0.5
-        label.TextStrokeColor3 = isRare and Color3.new(0, 0, 1) or Color3.new(0, 0, 0)
-        label.TextScaled = true
-        label.Font = Enum.Font.GothamBold
-        label.Parent = billboard
-
-        billboard.Parent = object
-        return billboard
-    end
-
-    -- Function to update ESP text and color
-    local function UpdateEsp(objectId, petName)
-        local object = getObjectFromId(objectId)
-        if not object or not espCache[objectId] then return end
-
-        local eggName = object:GetAttribute("EggName")
-        local labelGui = espCache[objectId]
-        if labelGui and labelGui:FindFirstChildOfClass("TextLabel") then
-            labelGui.TextLabel.Text = string.format("%s | %s", eggName, petName)
-            labelGui.TextLabel.TextColor3 = isRarePet(petName) and Color3.new(0, 1, 1) or Color3.new(1, 1, 1)
-            labelGui.TextLabel.TextStrokeColor3 = isRarePet(petName) and Color3.new(0, 0, 1) or Color3.new(0, 0, 0)
-            
-            -- Notify if rare pet
-            if isRarePet(petName) then
-                notifyRarePet(petName, eggName)
-            end
+        if _G.GrowAGardenESP.SelectedPets[petName] then
+            pauseRejoin = true
+            task.delay(10, function() pauseRejoin = false end)
+            createCustomNotification(petName)
+            updateNotificationLog()
         end
-    end
-
-    -- Function to add ESP to an egg
-    local function AddEsp(object)
-        if object:GetAttribute("OWNER") ~= LocalPlayer.Name then return end
-
-        local eggName = object:GetAttribute("EggName")
-        local petName = eggPets and eggPets[object:GetAttribute("OBJECT_UUID")] or "?"
-        local objectId = object:GetAttribute("OBJECT_UUID")
-        if not objectId then return end
-
-        local esp = CreateEspGui(object, string.format("%s | %s", eggName, petName), isRarePet(petName))
-        espCache[objectId] = esp
-    end
-
-    -- Function to remove ESP from an egg
-    local function RemoveEsp(object)
-        if object:GetAttribute("OWNER") ~= LocalPlayer.Name then return end
-
-        local objectId = object:GetAttribute("OBJECT_UUID")
-        if espCache[objectId] then
-            espCache[objectId]:Destroy()
-            espCache[objectId] = nil
-        end
-    end
-
-    -- ESP Toggle Logic
-    espButton.MouseButton1Click:Connect(function()
-        espEnabled = not espEnabled
-        _G.GrowAGardenESP.Enabled = espEnabled
-        
-        if espEnabled then
-            espButton.Text = "ESP: ON"
-            espButton.BackgroundColor3 = Color3.fromRGB(80, 180, 80)
-            for _, object in CollectionService:GetTagged("PetEggServer") do
-                task.spawn(AddEsp, object)
-            end
-            CollectionService:GetInstanceAddedSignal("PetEggServer"):Connect(AddEsp)
-            CollectionService:GetInstanceRemovedSignal("PetEggServer"):Connect(RemoveEsp)
-        else
-            espButton.Text = "ESP: OFF"
-            espButton.BackgroundColor3 = Color3.fromRGB(180, 80, 80)
-            for objectId, billboard in pairs(espCache) do
-                billboard:Destroy()
-                espCache[objectId] = nil
-            end
-        end
-    end)
-
-    -- Initialize ESP if enabled
-    if espEnabled and hatchFunction then
-        for _, object in CollectionService:GetTagged("PetEggServer") do
-            task.spawn(AddEsp, object)
-        end
-        CollectionService:GetInstanceAddedSignal("PetEggServer"):Connect(AddEsp)
-        CollectionService:GetInstanceRemovedSignal("PetEggServer"):Connect(RemoveEsp)
-    end
-
-    -- Hook the EggReadyToHatch event
-    if hatchFunction then
-        local old
-        old = hookfunction(getconnections(ReplicatedStorage.GameEvents.EggReadyToHatch_RE.OnClientEvent)[1].Function, newcclosure(function(objectId, petName)
-            if espEnabled then
-                UpdateEsp(objectId, petName)
-            end
-            return old(objectId, petName)
-        end))
     end
 end
 
--- Initial GUI creation
-createGui()
+local function AddEsp(object)
+    if object:GetAttribute("OWNER") ~= LocalPlayer.Name then return end
+    local eggName = object:GetAttribute("EggName")
+    local petName = eggPets and eggPets[object:GetAttribute("OBJECT_UUID")] or "?"
+    local objectId = object:GetAttribute("OBJECT_UUID")
+    if not objectId then return end
+    local esp = CreateEspGui(object, string.format("%s | %s", eggName, petName), isRarePet(petName))
+    espCache[objectId] = esp
+end
 
--- Reconnect if player rejoins
-Players.PlayerAdded:Connect(function(player)
-    if player == LocalPlayer then
-        task.wait(3) -- Wait for everything to load
-        createGui()
+local function RemoveEsp(object)
+    if object:GetAttribute("OWNER") ~= LocalPlayer.Name then return end
+    local objectId = object:GetAttribute("OBJECT_UUID")
+    if espCache[objectId] then
+        espCache[objectId]:Destroy()
+        espCache[objectId] = nil
     end
-end)
+end
+
+if _G.GrowAGardenESP.Enabled and hatchFunction then
+    for _, object in CollectionService:GetTagged("PetEggServer") do
+        task.spawn(AddEsp, object)
+    end
+    CollectionService:GetInstanceAddedSignal("PetEggServer"):Connect(AddEsp)
+    CollectionService:GetInstanceRemovedSignal("PetEggServer"):Connect(RemoveEsp)
+end
+
+if ReplicatedStorage.GameEvents:FindFirstChild("EggReadyToHatch_RE") then
+    ReplicatedStorage.GameEvents.EggReadyToHatch_RE.OnClientEvent:Connect(function(objectId, petName)
+        if _G.GrowAGardenESP.Enabled then
+            UpdateEsp(objectId, petName)
+        end
+    end)
+end
+
+espToggle:Set(_G.GrowAGardenESP.Enabled)
+webhookInput:Set(_G.GrowAGardenESP.WebhookUrl)
+autoRejoinToggle:Set(_G.GrowAGardenESP.AutoRejoinEnabled)
+autoRejoinSlider:Set(_G.GrowAGardenESP.AutoRejoinDelay)
+updateNotificationLog()
