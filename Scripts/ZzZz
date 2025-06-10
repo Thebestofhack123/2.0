@@ -139,14 +139,14 @@ local function isRarePet(petName)
     return table.find(RARE_PETS, petName) ~= nil
 end
 
-local function notifyPet(petName, eggName, isSelected)
+local function notifyPet(petName, eggName)
     if _G.GrowAGardenESP.WebhookUrl == "" then return end
     if _G.GrowAGardenESP.LastNotified[petName] and os.time() - _G.GrowAGardenESP.LastNotified[petName] < 300 then return end
     local embed = {
         {
-            title = isSelected and "🎉 Selected Pet Appeared! 🎉" or "🎉 Good Pet Appeared! 🎉",
+            title = "🎉 Selected Pet Appeared! 🎉",
             description = string.format("You hatched a **%s** from a **%s** egg!", petName, eggName),
-            color = isSelected and 0xFF00FF or 0x00FF00,
+            color = 0xFF00FF,
             fields = {
                 { name = "Game", value = string.format("[%s](https://www.roblox.com/games/%d)", game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name, game.PlaceId), inline = true },
                 { name = "Player", value = LocalPlayer.Name, inline = true },
@@ -446,11 +446,8 @@ local function hasSelectedPetEgg()
         local label = billboard:FindFirstChildOfClass("TextLabel")
         if label then
             local currentPetName = label.Text:match("| (.+)$")
-            if currentPetName then
-                currentPetName = currentPetName:gsub("%s+", "")
-                if _G.GrowAGardenESP.SelectedPets[currentPetName] then
-                    return true
-                end
+            if currentPetName and _G.GrowAGardenESP.SelectedPets[currentPetName] then
+                return true
             end
         end
     end
@@ -467,10 +464,8 @@ local function UpdateEsp(objectId, petName)
         labelGui.TextLabel.TextColor3 = isRarePet(petName) and Color3.new(0, 1, 1) or Color3.new(1, 1, 1)
         labelGui.TextLabel.TextStrokeColor3 = isRarePet(petName) and Color3.new(0, 0, 1) or Color3.new(0, 0, 0)
         if _G.GrowAGardenESP.SelectedPets[petName] then
-            notifyPet(petName, eggName, true)
+            notifyPet(petName, eggName)
             createCustomNotification(petName)
-        elseif isRarePet(petName) then
-            notifyPet(petName, eggName, false)
         end
     end
 end
@@ -484,10 +479,8 @@ local function AddEsp(object)
     local esp = CreateEspGui(object, string.format("%s | %s", eggName, petName), isRarePet(petName))
     espCache[objectId] = esp
     if _G.GrowAGardenESP.SelectedPets[petName] then
-        notifyPet(petName, eggName, true)
+        notifyPet(petName, eggName)
         createCustomNotification(petName)
-    elseif isRarePet(petName) then
-        notifyPet(petName, eggName, false)
     end
 end
 
@@ -502,14 +495,34 @@ end
 
 local function attemptRejoin()
     while _G.GrowAGardenESP.AutoRejoinEnabled do
-        task.wait(_G.GrowAGardenESP.AutoRejoinDelay)
         if hasSelectedPetEgg() then
-            Rayfield:Notify({ Title = "Auto-Rejoin Skipped", Content = "Selected pet found. Auto-rejoin attempt skipped.", Duration = 5 })
-            table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = "Auto-rejoin skipped due to selected pet found" })
+            Rayfield:Notify({ Title = "Auto-Rejoin Halted", Content = "Selected pet found in initial check. Auto-rejoin halted.", Duration = 5 })
+            table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = "Auto-rejoin halted due to selected pet in initial check" })
             if #_G.GrowAGardenESP.NotificationLog > 10 then
                 table.remove(_G.GrowAGardenESP.NotificationLog, 1)
             end
-            continue -- Skip rejoin attempt but keep the loop running
+            task.wait(1)
+            continue
+        end
+        task.wait(_G.GrowAGardenESP.AutoRejoinDelay / 2)
+        if hasSelectedPetEgg() then
+            Rayfield:Notify({ Title = "Auto-Rejoin Halted", Content = "Selected pet found in mid-delay check. Auto-rejoin halted.", Duration = 5 })
+            table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = "Auto-rejoin halted due to selected pet in mid-delay check" })
+            if #_G.GrowAGardenESP.NotificationLog > 10 then
+                table.remove(_G.GrowAGardenESP.NotificationLog, 1)
+            end
+            task.wait(1)
+            continue
+        end
+        task.wait(_G.GrowAGardenESP.AutoRejoinDelay / 2)
+        if hasSelectedPetEgg() then
+            Rayfield:Notify({ Title = "Auto-Rejoin Halted", Content = "Selected pet found in final check. Auto-rejoin halted.", Duration = 5 })
+            table.insert(_G.GrowAGardenESP.NotificationLog, { Time = os.time(), Message = "Auto-rejoin halted due to selected pet in final check" })
+            if #_G.GrowAGardenESP.NotificationLog > 10 then
+                table.remove(_G.GrowAGardenESP.NotificationLog, 1)
+            end
+            task.wait(1)
+            continue
         end
         if _G.GrowAGardenESP.RejoinAttempts < _G.GrowAGardenESP.MaxRejoinAttempts then
             local success, errorMsg = pcall(function()
@@ -549,7 +562,7 @@ if _G.GrowAGardenESP.Enabled and hatchFunction then
         task.spawn(function()
             RemoveEsp(object)
         end)
-    end)
+    end
 end
 
 if ReplicatedStorage.GameEvents:FindFirstChild("EggReadyToHatch_RE") then
