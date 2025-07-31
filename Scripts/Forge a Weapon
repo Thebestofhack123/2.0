@@ -1,5 +1,3 @@
--- This script was generated using the MoonVeil Obfuscator v1.3.1 [https://moonveil.cc]
-
 local wDa,AX,ihb=type,pairs,getmetatable;
 local xLa,lvc,GRa,Dhb,guc,hBb,Kfc,Js,sL,Iz,Ric,Uuc
 Js,Iz={[-9024]=-2717,[-29920]=5939,[-15248]=-20672,[-26384]=-6561,[16800]=-20441,[15775]=26728,[-20208]=515,[672]=-20672,[-22015]=-7780,[-3011]=26728,[-11186]=26728,[21084]=26728,[21114]=-7143,[-10236]=515,[-665]=-13710,[23073]=-6561,[-12749]=515,[25798]=-7780,[-24735]=-5057},function(fRb)
