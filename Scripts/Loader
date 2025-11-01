@@ -64,9 +64,25 @@ local scripts = {
     [87700573492940] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/UDG",
     [16732694052] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/PolleserHub%202.0%20Fisch",
     [94725155944518] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/Skinwalkers",
-    [126884695634066] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/GaG"
+    [126884695634066] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/GaG",
+    [1537690962] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/BSS", -- Bee Swarm Simulator
+    [2413927524] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/TheRakeR", -- The Rake REMASTERED
+    [110239180142623] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/TsunamiEscape", -- Tsunami Escape
+    [3101667897] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/LOS", -- Legends Of Speed
+    [93774312410805] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/ARNGTD", -- Anime RNG TD
+    [136372246050123] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/StickBattles", -- Stick Battles
+    [142823291] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/MM2", -- Murder Mystery 2
+    [95702387256198] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/SAC", -- Steal a Car
+    [11276071411] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/BENPCORDIE", -- Be NPC or DIE
+    [126244816328678] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/Digv2", -- DIG
+    [5991163185] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/SprayPaint" -- Spray Print
 }
 
+
+local creators = {
+    [8818124] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/ViolenceDistrict", -- Violence District
+    [16911831] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/Gnd" -- Guts & Blackpowder
+}
 local url = scripts[PlaceId]
 if url then
     local ok, response = pcall(game.HttpGet, game, url)
@@ -76,4 +92,11 @@ if url then
             func()
         end
     end
+end
+
+local creatorId = tonumber(game.CreatorId or game.CreatorUserId or 0) or 0
+local creatorUrl = creators[creatorId]
+if creatorUrl then
+	fetchAndRun(creatorUrl)
+	return
 end
