@@ -13,6 +13,7 @@
 --]]
 
 local PlaceId = game.PlaceId
+local CreatorId = game.CreatorId
 local scripts = {
     [122678592501168] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/Beaks",
     [126625214460461] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/ForgeaWeapon",
@@ -83,6 +84,7 @@ local creators = {
     [8818124] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/ViolenceDistrict", -- Violence District
     [16911831] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/Gnd" -- Guts & Blackpowder
 }
+
 local url = scripts[PlaceId]
 if url then
     local ok, response = pcall(game.HttpGet, game, url)
@@ -94,9 +96,13 @@ if url then
     end
 end
 
-local creatorId = tonumber(game.CreatorId or game.CreatorUserId or 0) or 0
-local creatorUrl = creators[creatorId]
-if creatorUrl then
-	fetchAndRun(creatorUrl)
-	return
+local urlfr = creators[CreatorId]
+if urlfr then
+    local ok, response = pcall(game.HttpGet, game, urlfr)
+    if ok and response and response:match("%w") then
+        local func, err = loadstring(response)
+        if func then
+            func()
+        end
+    end
 end
