@@ -74,10 +74,13 @@ local scripts = {
     [142823291] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/MM2", -- Murder Mystery 2
     [95702387256198] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/SAC", -- Steal a Car
     [11276071411] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/BENPCORDIE", -- Be NPC or DIE
-    [126244816328678] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/Digv2", -- DIG
-    [5991163185] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/SprayPaint" -- Spray Print
+    [126244816328678] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/Digv2" -- DIG
 }
 
+local creators = {
+    [8818124] = "https://pastebin.com/raw/gU1WMTgQ", -- Violence District
+    [16911831] = "https://pastebin.com/raw/v4FwY4ZM" -- Guts & Blackpowder
+}
 
 local function fetchAndRun(url)
 	if not url or tostring(url):match("%S") == nil then return end
