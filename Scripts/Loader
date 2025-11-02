@@ -14,6 +14,7 @@
 
 local PlaceId = game.PlaceId
 local scripts = {
+    [98868317791094] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/Dump", -- DUMP
     [122678592501168] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/Beaks",
     [126625214460461] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/ForgeaWeapon",
     [81440632616906] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/DTEC",
