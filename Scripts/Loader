@@ -14,6 +14,7 @@
 
 local PlaceId = game.PlaceId
 local scripts = {
+    [125886895122772] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/CubeGaem", -- Cube Gaem
     [137604575642443] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/LastRun", -- Last Run
     [86628581581863] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/AnimeRails", -- Anime Rails
     [105141077088559] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/AnimeRailsI", -- Anime Rails Ingame
