@@ -83,8 +83,8 @@ local scripts = {
 }
 
 local creators = {
-    [8818124] = "https://pastebin.com/raw/gU1WMTgQ", -- Violence District
-    [16911831] = "https://pastebin.com/raw/v4FwY4ZM" -- Guts & Blackpowder
+    [8818124] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/ViolenceDistrict", -- Violence District
+    [16911831] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/GnB" -- Guts & Blackpowder
 }
 
 local function fetchAndRun(url)
