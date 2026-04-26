@@ -52,8 +52,8 @@ local scripts = {
     [131623223084840] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr", -- Escape Tsunami For Brainrots!
     [119987266683883] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr", -- Escape Lava For Brainrots!
     [130594398886540] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr", -- Garden Horizon
-    [121655861880263] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr",
-    [1] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr",
+    [121655861880263] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr", -- endless cultivation
+    [2202352383] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr", -- SPTS Classic
     [1] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr",
     [1] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr",
     [1] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr",
@@ -104,6 +104,7 @@ local scripts = {
 }
 
 local creators = {
+    [1321140345] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr", -- Scary Shawarma Kiosk
     [268825133] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr", -- Endless Cultivation
     [8818124] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr", -- Violence District
     [16911831] = "https://raw.githubusercontent.com/Thebestofhack123/2.0/refs/heads/main/Scripts/loaderfr" -- Guts & Blackpowder
